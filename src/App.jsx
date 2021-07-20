@@ -4,21 +4,12 @@ import { useEffect, useState } from 'react';
 import Search from './components/Search';
 import Current from './components/Current';
 import Daily from './components/Daily';
+import Hourly from './components/Hourly';
 
 function App() {
   const [city, setCity] = useState('');
   const [geoCodes, setGeoCodes] = useState({});
   const [response, setResponse] = useState({});
-
-  const fetchData = async (lat, lon) => {
-    const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${env.API_KEY}&units=metric`
-    );
-    console.log('fetch res', res);
-    const json = await res.json();
-    console.log('fetch json', json);
-    setResponse(json);
-  };
 
   const getGeoCodes = async city => {
     const res = await fetch(
@@ -37,6 +28,16 @@ function App() {
     });
   };
 
+  const fetchData = async (lat, lon) => {
+    const res = await fetch(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${env.API_KEY}&units=metric`
+    );
+    console.log('fetch res', res);
+    const json = await res.json();
+    console.log('fetch json', json);
+    setResponse(json);
+  };
+
   useEffect(() => {
     getGeoCodes('Vancouver');
   }, []);
@@ -45,20 +46,16 @@ function App() {
     if (geoCodes.lat && geoCodes.lon) fetchData(geoCodes.lat, geoCodes.lon);
   }, [geoCodes]);
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    getGeoCodes(city);
-    setCity('');
-  };
   const getTime = time => new Date(time * 1000).toLocaleTimeString();
   const getDate = time => new Date(time * 1000).toLocaleDateString();
 
   return (
     <div>
       <h2>Weather App</h2>
-      <Search handleSubmit={handleSubmit} setCity={setCity} city={city} />
+      <Search getGeoCodes={getGeoCodes} setCity={setCity} city={city} />
       <Current geoCodes={geoCodes} response={response} getTime={getTime} />
       <Daily response={response} getDate={getDate} getTime={getTime} />
+      <Hourly response={response} getTime={getTime} />
     </div>
   );
 }

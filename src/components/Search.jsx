@@ -1,6 +1,11 @@
 import React from 'react';
 
-function Search({ handleSubmit, city, setCity }) {
+function Search({ getGeoCodes, city, setCity }) {
+  const handleSubmit = e => {
+    e.preventDefault();
+    getGeoCodes(city);
+    setCity('');
+  };
   return (
     <form onSubmit={handleSubmit}>
       <input
