@@ -18,7 +18,7 @@ function Hourly({ response, getTime }) {
               alt={`${hour.weather[0].description} icon`}
             />
           </li>
-          <li>Temp {hour.temp} C</li>
+          <li>Temp {hour.temp} °C</li>
           <li>Humidity {hour.humidity}% </li>
         </ul>
       ))}

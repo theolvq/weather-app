@@ -20,9 +20,9 @@ function Daily({ response, getDate, getTime }) {
                 alt={`${day.weather[0].description} icon`}
               />
             </li>
-            <li>Temperature {day.temp.day}</li>
-            <li>Min Temp {day.temp.min}</li>
-            <li>Max Temp {day.temp.max}</li>
+            <li>Temperature {day.temp.day}°C</li>
+            <li>Min Temp {day.temp.min}°C</li>
+            <li>Max Temp {day.temp.max}°C</li>
             <li>Sunrise {getTime(day.sunrise)}</li>
             <li>Sunset {getTime(day.sunset)}</li>
           </ul>

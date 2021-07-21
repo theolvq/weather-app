@@ -8,8 +8,8 @@ function Current({ geoCodes, response, getTime }) {
     <>
       <h2>Current Weather in {geoCodes.name}</h2>
       <ul>
-        <li>Temperature now {response.current.temp} C</li>
-        <li>Feels like {response.current.feels_like} C</li>
+        <li>Temperature now {response.current.temp} °C</li>
+        <li>Feels like {response.current.feels_like} °C</li>
         <li>Humidity {response.current.humidity} %</li>
         <li>
           Weather for today {response.current.weather[0].description}

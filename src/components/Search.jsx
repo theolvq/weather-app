@@ -7,7 +7,10 @@ function Search({ getGeoCodes, city, setCity }) {
     setCity('');
   };
   return (
-    <form onSubmit={handleSubmit}>
+    <form
+      className='container m-4 flex justify-center items-center'
+      onSubmit={handleSubmit}
+    >
       <input
         type='text'
         name='city'
