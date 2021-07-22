@@ -1,12 +1,14 @@
 import React from 'react';
 import Search from './Search';
+import logo from '../img/logo.png';
 
 function Header({ getGeoCodes, setCity, city }) {
   return (
-    <header className='flex'>
+    <header className='flex bg-grey'>
       <img
-        src='https://home.openweathermap.org/assets/openweather-negative-logo-RGB-9c9b3f32b47b8a005ac22bb290136b1aa14e384b7dd8baf87dd08248c21ac7ea.png'
+        src={logo}
         alt='open weather logo'
+        className='min-w-0 max-h-24 p-4'
       />
       <Search getGeoCodes={getGeoCodes} setCity={setCity} city={city} />
     </header>

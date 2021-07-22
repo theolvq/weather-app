@@ -51,7 +51,7 @@ function App() {
   const getDate = time => new Date(time * 1000).toLocaleDateString();
 
   return (
-    <div className='p-4 bg-gray-300'>
+    <div>
       <Header getGeoCodes={getGeoCodes} setCity={setCity} city={city} />
       <Current geoCodes={geoCodes} response={response} getTime={getTime} />
       <Daily response={response} getDate={getDate} getTime={getTime} />
