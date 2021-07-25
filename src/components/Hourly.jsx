@@ -7,6 +7,7 @@ function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
   console.log(window.innerWidth / 200);
 
   const handleClick = (e) => {
+    console.log(e.target);
     const { id } = e.target;
     if (id === 'previous' && range.low > 0) {
       setRange({
@@ -73,7 +74,7 @@ function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
             <li className='text-2xl'>
               {hour.temp.toFixed()}°C{' '}
               <img
-                className='inline pb-2 '
+                className='inline pb-2 max-h-12'
                 src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}.png`}
                 alt={`${hour.weather[0].description} icon`}
               />
@@ -85,7 +86,7 @@ function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
         <button onClick={handleClick}>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='h-6 w-6 hover:scale-150'
+            className='h-6 w-6'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'

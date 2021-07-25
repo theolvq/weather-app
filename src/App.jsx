@@ -48,12 +48,12 @@ function App() {
   }, [geoCodes]);
 
   const getTime = (time) =>
-    new Date(time * 1000).toLocaleTimeString('en-US', {
+    new Date(time * 1000).toLocaleTimeString(undefined, {
       hour: '2-digit',
       minute: '2-digit',
     });
   const getDate = (time) =>
-    new Date(time * 1000).toLocaleDateString('en-US', {
+    new Date(time * 1000).toLocaleDateString(undefined, {
       day: '2-digit',
       month: 'long',
     });

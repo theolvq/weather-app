@@ -13,7 +13,7 @@ function Current({ geoCodes, response, getTime, capitalizeFirstLetter }) {
       <ul>
         <li className='text-3xl '>
           <img
-            className='inline'
+            className='inline pb-2'
             src={`http://openweathermap.org/img/wn/${response.current.weather[0].icon}.png`}
             alt={`${response.current.weather[0].description} icon`}
           />{' '}
