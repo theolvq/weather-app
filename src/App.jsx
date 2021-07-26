@@ -63,7 +63,7 @@ function App() {
   return (
     <div className='w-full overflow-hidden'>
       <Header getGeoCodes={getGeoCodes} setCity={setCity} city={city} />
-      <div className='flex gap-4 mx-10 my-5'>
+      <div className='flex gap-4 px-8 py-5 bg-gradient-to-b from-aqua to-white'>
         <Current
           geoCodes={geoCodes}
           response={response}

@@ -6,20 +6,20 @@ function Current({ geoCodes, response, getTime, capitalizeFirstLetter }) {
   }
 
   return (
-    <div className='min-w-max'>
+    <div className='w-2/12'>
       <h1 className='font-bold text-2xl'>
         {geoCodes.name}, {geoCodes.country}
       </h1>
       <ul>
-        <li className='text-3xl '>
+        <li className='font-light text-6xl '>
+          {response.current.temp.toFixed()}°C
+        </li>
+        <li>
           <img
             className='inline pb-2'
             src={`http://openweathermap.org/img/wn/${response.current.weather[0].icon}.png`}
             alt={`${response.current.weather[0].description} icon`}
-          />{' '}
-          {response.current.temp.toFixed()} °C
-        </li>
-        <li>
+          />
           {capitalizeFirstLetter(response.current.weather[0].description)}
         </li>
         <li>Feels like {response.current.feels_like.toFixed()} °C</li>
