@@ -5,9 +5,9 @@ function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
 
   const [range, setRange] = useState({
     low: 0,
-    high: Math.floor(window.innerWidth / 175),
+    high: 3,
   });
-  console.log(window.innerWidth / 200);
+  console.log(window.innerWidth);
 
   const handlePrevClick = (e) => {
     if (range.low > 0) {
@@ -42,8 +42,8 @@ function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
   );
 
   return (
-    <div className='flex flex-col w-10/12'>
-      <h2 className='text-2xl font-thin'>Next 48 hours</h2>
+    <div className='text-white flex flex-col bg-grey bg-opacity-60 p-4 shadow-md'>
+      <h2 className='text-2xl font-light'>Next 48 hours</h2>
       <div className='flex items-center gap-4'>
         <button onClick={handlePrevClick} className='h-8 w-8'>
           <svg
@@ -63,29 +63,28 @@ function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
         </button>
         {hourlyToShow.map((hour) => (
           <ul
-            className='font-light text-sm text-center min-w-max '
+            className='font-normal flex flex-col items-center shadow-lg w-44 my-2 p-4 '
             key={hour.dt}
           >
-            {isNextDay(hourly[0].dt, hour.dt) ? (
-              <>
-                <li>{getDate(hour.dt)}</li>
-                <li>{getTime(hour.dt)}</li>
-              </>
-            ) : (
-              <>
-                <li>Today</li>
-                <li>{getTime(hour.dt)}</li>
-              </>
-            )}
-            <li className='text-2xl'>
-              {hour.temp.toFixed()}°C{' '}
+            <li className='text-lg'>
+              {isNextDay(hourly[0].dt, hour.dt) ? (
+                <>{getDate(hour.dt)}</>
+              ) : (
+                <>Today</>
+              )}
+            </li>
+            <li>{getTime(hour.dt)}</li>
+            <li className='text-2xl'>{hour.temp.toFixed()}°C </li>
+            <li className='flex items-center '>
+              {' '}
               <img
                 className='inline pb-2 max-h-12'
                 src={`http://openweathermap.org/img/wn/${hour.weather[0].icon}.png`}
                 alt={`${hour.weather[0].description} icon`}
               />
+              <span>{capitalizeFirstLetter(hour.weather[0].description)}.</span>
             </li>
-            <li>{capitalizeFirstLetter(hour.weather[0].description)}.</li>
+            <li>Feels like {hour.feels_like.toFixed()}°C </li>
             <li>{hour.humidity}% humidity.</li>
           </ul>
         ))}

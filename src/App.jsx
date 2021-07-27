@@ -63,21 +63,28 @@ function App() {
   return (
     <div className='w-full overflow-hidden'>
       <Header getGeoCodes={getGeoCodes} setCity={setCity} city={city} />
-      <div className='flex gap-4 px-8 py-5 bg-gradient-to-b from-aqua to-white'>
-        <Current
-          geoCodes={geoCodes}
+      <div className='bg-gradient-to-br from-aqua via-white to-orange '>
+        <div className='flex gap-4 px-8 py-5 '>
+          <Current
+            geoCodes={geoCodes}
+            response={response}
+            getTime={getTime}
+            capitalizeFirstLetter={capitalizeFirstLetter}
+          />
+          <Hourly
+            response={response}
+            getTime={getTime}
+            getDate={getDate}
+            capitalizeFirstLetter={capitalizeFirstLetter}
+          />
+        </div>
+        <Daily
           response={response}
-          getTime={getTime}
-          capitalizeFirstLetter={capitalizeFirstLetter}
-        />
-        <Hourly
-          response={response}
-          getTime={getTime}
           getDate={getDate}
+          getTime={getTime}
           capitalizeFirstLetter={capitalizeFirstLetter}
         />
       </div>
-      <Daily response={response} getDate={getDate} getTime={getTime} />
     </div>
   );
 }
