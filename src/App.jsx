@@ -61,23 +61,23 @@ function App() {
     `${str[0].toUpperCase()}${str.slice(1)}`;
 
   return (
-    <div className='w-full overflow-hidden'>
+    <div className='w-screen min-h-screen bg-gradient-to-br from-aqua via-white to-orange '>
       <Header getGeoCodes={getGeoCodes} setCity={setCity} city={city} />
-      <div className='bg-gradient-to-br from-aqua via-white to-orange '>
-        <div className='flex gap-4 px-8 py-5 '>
-          <Current
-            geoCodes={geoCodes}
-            response={response}
-            getTime={getTime}
-            capitalizeFirstLetter={capitalizeFirstLetter}
-          />
-          <Hourly
-            response={response}
-            getTime={getTime}
-            getDate={getDate}
-            capitalizeFirstLetter={capitalizeFirstLetter}
-          />
-        </div>
+      <div className='flex gap-4 px-8 py-5 '>
+        <Current
+          geoCodes={geoCodes}
+          response={response}
+          getTime={getTime}
+          capitalizeFirstLetter={capitalizeFirstLetter}
+        />
+        <Hourly
+          response={response}
+          getTime={getTime}
+          getDate={getDate}
+          capitalizeFirstLetter={capitalizeFirstLetter}
+        />
+      </div>
+      <div className='px-8 py-5'>
         <Daily
           response={response}
           getDate={getDate}

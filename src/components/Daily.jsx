@@ -6,31 +6,108 @@ function Daily({ response, getDate, getTime, capitalizeFirstLetter }) {
   }
 
   return (
-    <div className='flex flex-col justify-center gap-2 items-center'>
-      <h2>Daily weather for the next 8 days</h2>
+    <div className='grid grid-cols-4 2xl:grid-cols-8 gap-4'>
       {response.daily &&
         response.daily.map((day) => (
           <ul
-            className='shadow-md bg-grey bg-opacity-60 text-white p-4 w-9/12'
+            className='shadow-md bg-grey bg-opacity-60 text-white p-4'
             key={day.dt}
           >
-            <li>{getDate(day.dt)}</li>
-            <div className='flex items-center'>
-              <li>
-                {capitalizeFirstLetter(day.weather[0].description)}
-                <img
-                  className='weather-icon'
-                  src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
-                  alt={`${day.weather[0].description} icon`}
-                />
-              </li>
-              <li>{day.temp.day}°C</li>
-              <li>
-                <span>Min {day.temp.min}°C</span> -
-                <span> Max {day.temp.max}°C</span>
-              </li>
-              <li>Sunrise {getTime(day.sunrise)}</li>
-              <li>Sunset {getTime(day.sunset)}</li>
+            <div className='shadow-lg m-2 p-4'>
+              <li>{getDate(day.dt)}</li>
+              <div className='flex flex-col items-center gap-2'>
+                <li className='flex items-center'>
+                  <img
+                    className='inline'
+                    src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
+                    alt={`${day.weather[0].description} icon`}
+                  />
+                  {capitalizeFirstLetter(day.weather[0].description)}
+                </li>
+                <li className='flex w-1/2 justify-between'>
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='w-6 h-6 inline'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      fill='#fff'
+                      d='M4.069 13h-4.069v-2h4.069c-.041.328-.069.661-.069 1s.028.672.069 1zm3.034-7.312l-2.881-2.881-1.414 1.414 2.881 2.881c.411-.529.885-1.003 1.414-1.414zm11.209 1.414l2.881-2.881-1.414-1.414-2.881 2.881c.528.411 1.002.886 1.414 1.414zm-6.312-3.102c.339 0 .672.028 1 .069v-4.069h-2v4.069c.328-.041.661-.069 1-.069zm0 16c-.339 0-.672-.028-1-.069v4.069h2v-4.069c-.328.041-.661.069-1 .069zm7.931-9c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-3.033 7.312l2.88 2.88 1.415-1.414-2.88-2.88c-.412.528-.886 1.002-1.415 1.414zm-11.21-1.415l-2.88 2.88 1.414 1.414 2.88-2.88c-.528-.411-1.003-.885-1.414-1.414zm6.312-10.897c-3.314 0-6 2.686-6 6s2.686 6 6 6 6-2.686 6-6-2.686-6-6-6z'
+                    />
+                  </svg>
+                  <span>{day.temp.day.toFixed()}°C</span>
+                </li>
+                <li className='flex w-1/2 justify-between'>
+                  {' '}
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='w-6 h-6 inline'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      fill='#fff'
+                      d='M0 12c0 6.627 5.373 12 12 12s12-5.373 12-12-5.373-12-12-12-12 5.373-12 12zm2 0c0-5.292 4.113-9.612 9.315-9.965-3.205 2.154-5.315 5.813-5.315 9.965s2.11 7.811 5.315 9.965c-5.202-.353-9.315-4.673-9.315-9.965z'
+                    />
+                  </svg>{' '}
+                  {day.temp.night.toFixed()}°C
+                </li>
+                <li className='flex w-1/2 justify-between'>
+                  {' '}
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='w-6 h-6 inline'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      fill='#fff'
+                      d='M8.5 2c.827 0 1.5.673 1.5 1.5v7.525c0 1.569.514 2.287 1.411 3.05 1.01.858 1.589 2.106 1.589 3.425 0 2.481-2.019 4.5-4.5 4.5s-4.5-2.019-4.5-4.5c0-1.319.579-2.567 1.59-3.425.896-.761 1.41-1.48 1.41-3.05v-7.525c0-.827.673-1.5 1.5-1.5zm0-2c-1.933 0-3.5 1.567-3.5 3.5v7.525c0 .587-.258 1.145-.705 1.525-1.403 1.192-2.295 2.965-2.295 4.95 0 3.59 2.909 6.5 6.5 6.5s6.5-2.91 6.5-6.5c0-1.985-.892-3.758-2.295-4.95-.447-.38-.705-.938-.705-1.525v-7.525c0-1.933-1.567-3.5-3.5-3.5zm2.107 14.718c-1.012-.89-1.607-1.734-1.607-3.22v-1.498h-1v1.498c0 1.484-.597 2.332-1.607 3.22-.794.698-1.393 1.642-1.393 2.782 0 1.933 1.567 3.5 3.5 3.5s3.5-1.567 3.5-3.5c0-1.14-.599-2.083-1.393-2.782zm3.393-8.718v2h8v-2h-8z'
+                    />
+                  </svg>{' '}
+                  {day.temp.min.toFixed()}°C{' '}
+                </li>
+                <li className='flex w-1/2 justify-between'>
+                  {' '}
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='w-6 h-6 inline'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      fill='#fff'
+                      d='M8.5 2c.827 0 1.5.673 1.5 1.5v7.525c0 1.569.514 2.287 1.411 3.05 1.01.858 1.589 2.106 1.589 3.425 0 2.481-2.019 4.5-4.5 4.5s-4.5-2.019-4.5-4.5c0-1.319.579-2.567 1.59-3.425.896-.761 1.41-1.48 1.41-3.05v-7.525c0-.827.673-1.5 1.5-1.5zm0-2c-1.933 0-3.5 1.567-3.5 3.5v7.525c0 .587-.258 1.145-.705 1.525-1.403 1.192-2.295 2.965-2.295 4.95 0 3.59 2.909 6.5 6.5 6.5s6.5-2.91 6.5-6.5c0-1.985-.892-3.758-2.295-4.95-.447-.38-.705-.938-.705-1.525v-7.525c0-1.933-1.567-3.5-3.5-3.5zm2.107 14.718c-1.012-.89-1.607-1.734-1.607-3.22v-6.498h-1v6.498c0 1.484-.597 2.332-1.607 3.22-.794.698-1.393 1.642-1.393 2.782 0 1.933 1.567 3.5 3.5 3.5s3.5-1.567 3.5-3.5c0-1.14-.599-2.083-1.393-2.782zm11.393-8.718h-3v-3h-2v3h-3v2h3v3h2v-3h3v-2z'
+                    />
+                  </svg>{' '}
+                  {day.temp.max.toFixed()}°C
+                </li>
+                <li className='flex w-1/2 justify-between'>
+                  {' '}
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='w-6 h-6 inline'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      fill='#fff'
+                      d='M24 23h-24v-2h24v2zm-24-6v2h4.069c-.041-.328-.069-.661-.069-1s.028-.672.069-1h-4.069zm7.103-5.312l-2.881-2.881-1.415 1.414 2.881 2.881c.412-.529.886-1.003 1.415-1.414zm3.897-1.688h2v-5h3l-4-4-4 4h3v5zm8.931 7c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-7.931-5c-3.314 0-6 2.686-6 6 0 .341.035.674.09 1h11.82c.055-.326.09-.659.09-1 0-3.314-2.686-6-6-6zm7.778-3.193l-2.881 2.881c.528.411 1.003.886 1.414 1.414l2.881-2.881-1.414-1.414z'
+                    />
+                  </svg>{' '}
+                  {getTime(day.sunrise)}
+                </li>
+                <li className='flex w-1/2 justify-between'>
+                  {' '}
+                  <svg
+                    xmlns='http://www.w3.org/2000/svg'
+                    className='w-6 h-6 inline'
+                    viewBox='0 0 24 24'
+                  >
+                    <path
+                      fill='#fff'
+                      d='M24 23h-24v-2h24v2zm-24-6v2h4.069c-.041-.328-.069-.661-.069-1s.028-.672.069-1h-4.069zm7.103-5.312l-2.881-2.881-1.415 1.414 2.881 2.881c.412-.529.886-1.003 1.415-1.414zm5.897-10.688h-2v5h-3l4 4 4-4h-3v-5zm6.931 16c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-7.931-5c-3.314 0-6 2.686-6 6 0 .341.035.674.09 1h11.82c.055-.326.09-.659.09-1 0-3.314-2.686-6-6-6zm7.778-3.193l-2.881 2.881c.528.411 1.003.886 1.414 1.414l2.881-2.881-1.414-1.414z'
+                    />
+                  </svg>{' '}
+                  {getTime(day.sunset)}
+                </li>
+              </div>
             </div>
           </ul>
         ))}

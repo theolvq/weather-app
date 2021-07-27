@@ -63,7 +63,7 @@ function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
         </button>
         {hourlyToShow.map((hour) => (
           <ul
-            className='font-normal flex flex-col items-center shadow-lg w-44 my-2 p-4 '
+            className='flex flex-col items-center shadow-lg w-44 my-2 p-4 '
             key={hour.dt}
           >
             <li className='text-lg'>
