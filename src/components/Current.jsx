@@ -6,8 +6,9 @@ function Current({ geoCodes, response, getTime, capitalizeFirstLetter }) {
   }
 
   return (
-    <div className='bg-grey bg-opacity-60 text-white p-4 min-w-max shadow-md'>
-      <div className='m-2 p-4 shadow-lg'>
+    <div className='bg-grey bg-opacity-60 text-white p-4 min-w-max shadow-md flex flex-col  items-center'>
+      <h2 className='text-2xl font-light mb-4'>Now</h2>
+      <div className='mx-2 p-4 shadow-lg'>
         <h1 className='font-bold text-3xl'>
           {geoCodes.name}, {geoCodes.country}
         </h1>

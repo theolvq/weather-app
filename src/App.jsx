@@ -60,10 +60,14 @@ function App() {
   const capitalizeFirstLetter = (str) =>
     `${str[0].toUpperCase()}${str.slice(1)}`;
 
+  const isToday = (currentDayInSeconds, dateInSeconds) =>
+    new Date(currentDayInSeconds * 1000).toDateString() ===
+    new Date(dateInSeconds * 1000).toDateString();
+
   return (
     <div className='w-screen min-h-screen bg-gradient-to-br from-aqua via-white to-orange '>
       <Header getGeoCodes={getGeoCodes} setCity={setCity} city={city} />
-      <div className='flex gap-4 px-8 py-5 '>
+      <div className='grid grid-rows-1 grid-cols-4 gap-4 px-8 py-5 '>
         <Current
           geoCodes={geoCodes}
           response={response}
@@ -75,6 +79,7 @@ function App() {
           getTime={getTime}
           getDate={getDate}
           capitalizeFirstLetter={capitalizeFirstLetter}
+          isToday={isToday}
         />
       </div>
       <div className='px-8 py-5'>
@@ -83,6 +88,7 @@ function App() {
           getDate={getDate}
           getTime={getTime}
           capitalizeFirstLetter={capitalizeFirstLetter}
+          isToday={isToday}
         />
       </div>
     </div>

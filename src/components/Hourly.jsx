@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 
-function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
+function Hourly({
+  response,
+  getTime,
+  getDate,
+  capitalizeFirstLetter,
+  isToday,
+}) {
   const { hourly } = response;
 
   const [range, setRange] = useState({
     low: 0,
-    high: 3,
+    high: window.innerWidth / 320 - 1,
   });
-  console.log(window.innerWidth);
+  console.log(window.innerWidth / 320);
 
   const handlePrevClick = (e) => {
     if (range.low > 0) {
@@ -29,10 +35,6 @@ function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
     }
   };
 
-  const isNextDay = (currentDayInSeconds, dateInSeconds) =>
-    new Date(dateInSeconds * 1000).getDay() !==
-    new Date(currentDayInSeconds * 1000).getDay();
-
   if (!hourly) {
     return null;
   }
@@ -42,8 +44,8 @@ function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
   );
 
   return (
-    <div className='text-white flex flex-col bg-grey bg-opacity-60 p-4 shadow-md'>
-      <h2 className='text-2xl font-light'>Next 48 hours</h2>
+    <div className='col-span-3 text-white flex flex-col  items-center bg-grey bg-opacity-60 p-4 shadow-md'>
+      <h2 className='text-2xl font-light mb-4'>Next 48 hours</h2>
       <div className='flex items-center gap-4'>
         <button onClick={handlePrevClick} className='h-8 w-8'>
           <svg
@@ -67,10 +69,10 @@ function Hourly({ response, getTime, getDate, capitalizeFirstLetter }) {
             key={hour.dt}
           >
             <li className='text-lg'>
-              {isNextDay(hourly[0].dt, hour.dt) ? (
-                <>{getDate(hour.dt)}</>
-              ) : (
+              {isToday(hourly[0].dt, hour.dt) ? (
                 <>Today</>
+              ) : (
+                <>{getDate(hour.dt)}</>
               )}
             </li>
             <li>{getTime(hour.dt)}</li>
