@@ -7,7 +7,7 @@ function Daily({ response, getDate, getTime, capitalizeFirstLetter, isToday }) {
   }
 
   return (
-    <div className='grid grid-cols-4 2xl:grid-cols-8 gap-4'>
+    <div className='grid grid-cols-4  gap-4'>
       {daily.map((day) => (
         <ul
           className='shadow-md bg-grey bg-opacity-60 text-white p-4'

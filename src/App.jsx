@@ -65,31 +65,33 @@ function App() {
     new Date(dateInSeconds * 1000).toDateString();
 
   return (
-    <div className='w-screen min-h-screen bg-gradient-to-br from-aqua via-white to-orange '>
+    <div className=' min-h-screen  bg-gradient-to-br from-aqua via-white to-orange'>
       <Header getGeoCodes={getGeoCodes} setCity={setCity} city={city} />
-      <div className='grid grid-rows-1 grid-cols-4 gap-4 px-8 py-5 '>
-        <Current
-          geoCodes={geoCodes}
-          response={response}
-          getTime={getTime}
-          capitalizeFirstLetter={capitalizeFirstLetter}
-        />
-        <Hourly
-          response={response}
-          getTime={getTime}
-          getDate={getDate}
-          capitalizeFirstLetter={capitalizeFirstLetter}
-          isToday={isToday}
-        />
-      </div>
-      <div className='px-8 py-5'>
-        <Daily
-          response={response}
-          getDate={getDate}
-          getTime={getTime}
-          capitalizeFirstLetter={capitalizeFirstLetter}
-          isToday={isToday}
-        />
+      <div className='max-w-screen-xl px-8 py-5 mx-auto my-0 '>
+        <div className=' grid lg:grid-cols-4 gap-4 '>
+          <Current
+            geoCodes={geoCodes}
+            response={response}
+            getTime={getTime}
+            capitalizeFirstLetter={capitalizeFirstLetter}
+          />
+          <Hourly
+            response={response}
+            getTime={getTime}
+            getDate={getDate}
+            capitalizeFirstLetter={capitalizeFirstLetter}
+            isToday={isToday}
+          />
+        </div>
+        <div className='my-4'>
+          <Daily
+            response={response}
+            getDate={getDate}
+            getTime={getTime}
+            capitalizeFirstLetter={capitalizeFirstLetter}
+            isToday={isToday}
+          />
+        </div>
       </div>
     </div>
   );

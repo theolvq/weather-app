@@ -44,7 +44,7 @@ function Hourly({
   );
 
   return (
-    <div className='col-span-3 text-white flex flex-col  items-center bg-grey bg-opacity-60 p-4 shadow-md'>
+    <div className='col-span-3 text-white flex flex-col  items-center bg-grey bg-opacity-60  backdrop-filter backdrop-blur-lg p-4 shadow-md'>
       <h2 className='text-2xl font-light mb-4'>Next 48 hours</h2>
       <div className='flex items-center gap-4'>
         <button onClick={handlePrevClick} className='h-8 w-8'>

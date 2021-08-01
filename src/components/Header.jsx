@@ -4,7 +4,7 @@ import logo from '../img/logo.png';
 
 function Header({ getGeoCodes, setCity, city }) {
   return (
-    <header className='flex bg-grey w-screen'>
+    <header className='flex bg-grey min-w-screen'>
       <img
         src={logo}
         alt='open weather logo'

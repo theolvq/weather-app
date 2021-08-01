@@ -6,7 +6,7 @@ function Current({ geoCodes, response, getTime, capitalizeFirstLetter }) {
   }
 
   return (
-    <div className='bg-grey bg-opacity-60 text-white p-4 min-w-max shadow-md flex flex-col  items-center'>
+    <div className='bg-grey bg-opacity-60 text-white p-4  shadow-md flex flex-col  items-center'>
       <h2 className='text-2xl font-light mb-4'>Now</h2>
       <div className='mx-2 p-4 shadow-lg'>
         <h1 className='font-bold text-3xl'>
@@ -51,7 +51,9 @@ function Current({ geoCodes, response, getTime, capitalizeFirstLetter }) {
                 d='M24 23h-24v-2h24v2zm-24-6v2h4.069c-.041-.328-.069-.661-.069-1s.028-.672.069-1h-4.069zm7.103-5.312l-2.881-2.881-1.415 1.414 2.881 2.881c.412-.529.886-1.003 1.415-1.414zm3.897-1.688h2v-5h3l-4-4-4 4h3v5zm8.931 7c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-7.931-5c-3.314 0-6 2.686-6 6 0 .341.035.674.09 1h11.82c.055-.326.09-.659.09-1 0-3.314-2.686-6-6-6zm7.778-3.193l-2.881 2.881c.528.411 1.003.886 1.414 1.414l2.881-2.881-1.414-1.414z'
               />
             </svg>
-            {getTime(response.current.sunrise)}{' '}
+            {getTime(response.current.sunrise)}
+          </li>
+          <li className='flex items-center gap-2'>
             <svg
               xmlns='http://www.w3.org/2000/svg'
               width='24'
@@ -63,7 +65,7 @@ function Current({ geoCodes, response, getTime, capitalizeFirstLetter }) {
                 d='M24 23h-24v-2h24v2zm-24-6v2h4.069c-.041-.328-.069-.661-.069-1s.028-.672.069-1h-4.069zm7.103-5.312l-2.881-2.881-1.415 1.414 2.881 2.881c.412-.529.886-1.003 1.415-1.414zm5.897-10.688h-2v5h-3l4 4 4-4h-3v-5zm6.931 16c.041.328.069.661.069 1s-.028.672-.069 1h4.069v-2h-4.069zm-7.931-5c-3.314 0-6 2.686-6 6 0 .341.035.674.09 1h11.82c.055-.326.09-.659.09-1 0-3.314-2.686-6-6-6zm7.778-3.193l-2.881 2.881c.528.411 1.003.886 1.414 1.414l2.881-2.881-1.414-1.414z'
               />
             </svg>
-            {getTime(response.current.sunset)}{' '}
+            {getTime(response.current.sunset)}
           </li>
           <li className='flex items-center gap-4'></li>
         </ul>
