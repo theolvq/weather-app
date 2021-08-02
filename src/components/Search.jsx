@@ -7,7 +7,7 @@ function Search({ getGeoCodes, city, setCity, response }) {
     setCity('');
   };
 
-  const fillColor = response.current ? '#f2f2f2' : '#f2f2f200';
+  const fillColor = response.current ? '#f2f2f200' : '#f2f2f2';
   return (
     <form
       className='container flex justify-center gap-3 items-center'
@@ -21,7 +21,7 @@ function Search({ getGeoCodes, city, setCity, response }) {
         value={city}
         onChange={({ target }) => setCity(target.value)}
       />
-      <button className='flex gap-4  border-2 border-orange bg-orange rounded-xl pl-4 pr-12 py-2 hover:opacity-80 text-white '>
+      <button className='flex font-bold gap-4 border-2 border-orange bg-orange rounded-xl pl-4 pr-12 py-2 hover:opacity-80 text-white '>
         <svg
           xmlns='http://www.w3.org/2000/svg'
           className=' h-6 w-6 animate-spin'
