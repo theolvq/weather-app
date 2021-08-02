@@ -1,5 +1,3 @@
-import './App.css';
-import env from 'react-dotenv';
 import { useEffect, useState } from 'react';
 import Current from './components/Current';
 import Daily from './components/Daily';
@@ -11,11 +9,12 @@ function App() {
   const [geoCodes, setGeoCodes] = useState({});
   const [response, setResponse] = useState({});
 
+  const API_KEY = process.env.REACT_APP_API_KEY;
+  console.log(API_KEY);
+
   const getGeoCodes = async (city) => {
     const res = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${
-        env.API_KEY
-      }`
+      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`
     );
     console.log('geo res', res);
     const json = await res.json();
@@ -28,10 +27,9 @@ function App() {
       lon: json[0].lon,
     });
   };
-
   const fetchData = async (lat, lon) => {
     const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${env.API_KEY}&units=metric`
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
     );
     console.log('fetch res', res);
     const json = await res.json();
@@ -41,11 +39,11 @@ function App() {
 
   useEffect(() => {
     getGeoCodes('Vancouver');
-  }, []);
+  }, []); //eslint-disable-line
 
   useEffect(() => {
     if (geoCodes.lat && geoCodes.lon) fetchData(geoCodes.lat, geoCodes.lon);
-  }, [geoCodes]);
+  }, [geoCodes]); //eslint-disable-line
 
   const getTime = (time) =>
     new Date(time * 1000).toLocaleTimeString(undefined, {
