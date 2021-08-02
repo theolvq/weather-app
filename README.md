@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# Weather App
+
+This app uses the OpenWeather API and is built with React and Tailwind css.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

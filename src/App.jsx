@@ -10,15 +10,12 @@ function App() {
   const [response, setResponse] = useState({});
 
   const API_KEY = process.env.REACT_APP_API_KEY;
-  console.log(API_KEY);
 
   const getGeoCodes = async (city) => {
     const res = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`
     );
-    console.log('geo res', res);
     const json = await res.json();
-    console.log('geo json', json);
 
     setGeoCodes({
       name: json[0].name,
@@ -31,9 +28,7 @@ function App() {
     const res = await fetch(
       `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
     );
-    console.log('fetch res', res);
     const json = await res.json();
-    console.log('fetch json', json);
     setResponse(json);
   };
 
@@ -64,7 +59,13 @@ function App() {
 
   return (
     <div className=' min-h-screen  bg-gradient-to-br from-aqua via-white to-orange'>
-      <Header getGeoCodes={getGeoCodes} setCity={setCity} city={city} />
+      <Header
+        getGeoCodes={getGeoCodes}
+        setCity={setCity}
+        city={city}
+        response={response}
+      />
+
       <div className='max-w-screen-xl px-8 py-5 mx-auto my-0 '>
         <div className=' grid lg:grid-cols-4 gap-4 '>
           <Current

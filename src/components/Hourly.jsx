@@ -11,9 +11,8 @@ function Hourly({
 
   const [range, setRange] = useState({
     low: 0,
-    high: window.innerWidth / 320 - 1,
+    high: Math.round(window.innerWidth / 320 - 1),
   });
-  console.log(window.innerWidth / 320);
 
   const handlePrevClick = (e) => {
     if (range.low > 0) {
