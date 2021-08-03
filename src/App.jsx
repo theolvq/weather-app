@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import axios from 'axios';
 import Current from './components/Current';
 import Daily from './components/Daily';
 import Hourly from './components/Hourly';
@@ -9,27 +10,26 @@ function App() {
   const [geoCodes, setGeoCodes] = useState({});
   const [response, setResponse] = useState({});
 
-  const API_KEY = process.env.REACT_APP_API_KEY;
-
   const getGeoCodes = async (city) => {
-    const res = await fetch(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`
-    );
-    const json = await res.json();
-
+    const { data } = await axios.post('/geoCode', { city });
+    // const { data } = await axios(
+    //   `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`
+    // );
     setGeoCodes({
-      name: json[0].name,
-      country: json[0].country,
-      lat: json[0].lat,
-      lon: json[0].lon,
+      name: data[0].name,
+      country: data[0].country,
+      lat: data[0].lat,
+      lon: data[0].lon,
     });
   };
+
   const fetchData = async (lat, lon) => {
-    const res = await fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-    );
-    const json = await res.json();
-    setResponse(json);
+    const { data } = await axios.post('/weather', { lat, lon });
+    // const { data } = await axios(
+    //   `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    // );
+
+    setResponse(data);
   };
 
   useEffect(() => {
