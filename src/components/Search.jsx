@@ -1,26 +1,72 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function Search({ getGeoCodes, city, setCity, response }) {
+function Search({
+  getGeoCodes,
+  setGeoCodes,
+  city,
+  setCity,
+  cities,
+  setCities,
+  response,
+}) {
   const handleSubmit = (e) => {
     e.preventDefault();
     getGeoCodes(city);
     setCity('');
   };
 
+  const handleClick = (e) => {
+    console.log(e.target);
+    console.log(e.currentTarget);
+    const city = cities.find((city) => city.lat === Number(e.target.id));
+
+    setGeoCodes({
+      name: city.name,
+      country: city.country,
+      lat: city.lat,
+      lon: city.lon,
+      state: city.state,
+    });
+    setCities([]);
+    setCity('');
+  };
+
+  useEffect(() => {
+    if (city.length > 3) getGeoCodes(city);
+  }, [city]); //eslint-disable-line
+
   const fillColor = response.current ? '#f2f2f200' : '#f2f2f2';
   return (
     <form
-      className='container flex justify-center gap-3 items-center'
+      className='container flex justify-center gap-3 items-center '
       onSubmit={handleSubmit}
     >
-      <input
-        className='bg-grey border-2 border-orange py-2 px-3 w-1/3 rounded-xl focus:bg-white focus:border-opacity-0 transition duration-500'
-        placeholder='Search for a city'
-        type='text'
-        name='city'
-        value={city}
-        onChange={({ target }) => setCity(target.value)}
-      />
+      <div className='w-1/3 flex flex-col items-baseline '>
+        <input
+          className='text-white bg-grey border-2 border-orange py-2 px-3 rounded-xl focus:bg-white focus:text-grey focus:border-opacity-0 transition duration-500'
+          placeholder='Search for a city'
+          type='text'
+          name='city'
+          value={city}
+          onChange={({ target }) => setCity(target.value)}
+        />
+
+        {cities.length > 0 && (
+          <ul className='absolute top-16 bg-grey px-4 pb-2 rounded-b-lg w-1/5 cursor-pointer'>
+            {cities.map((city) => (
+              <li
+                key={city.lat}
+                value={city.name}
+                className='text-white relative hover:bg-aqua'
+                id={city.lat}
+                onClick={handleClick}
+              >
+                {city.name}, {city.country} {city.state && <>, {city.state} </>}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
       <button className='flex font-bold gap-4 border-2 border-orange bg-orange rounded-xl pl-4 pr-12 py-2 hover:opacity-80 text-white '>
         <svg
           xmlns='http://www.w3.org/2000/svg'

@@ -7,37 +7,45 @@ import Header from './components/Header';
 
 function App() {
   const [city, setCity] = useState('');
+  const [cities, setCities] = useState([]);
   const [geoCodes, setGeoCodes] = useState({});
   const [response, setResponse] = useState({});
 
+  const API_KEY = process.env.REACT_APP_API_KEY;
+
   const getGeoCodes = async (city) => {
-    const { data } = await axios.post('/geoCode', { city });
-    // const { data } = await axios(
-    //   `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`
-    // );
-    setGeoCodes({
-      name: data[0].name,
-      country: data[0].country,
-      lat: data[0].lat,
-      lon: data[0].lon,
-    });
+    // const { data } = await axios.post('/geoCode', { city });
+    const { data } = await axios(
+      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`
+    );
+    console.log(data);
+    if (data.length > 1) {
+      setCities(data);
+    }
+    if (data[0] && data.length === 1) {
+      setGeoCodes({
+        name: data[0].name,
+        country: data[0].country,
+        lat: data[0].lat,
+        lon: data[0].lon,
+      });
+    }
   };
 
-  const fetchData = async (lat, lon) => {
-    const { data } = await axios.post('/weather', { lat, lon });
-    // const { data } = await axios(
-    //   `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
-    // );
-
+  const getWeather = async (lat, lon) => {
+    // const { data } = await axios.post('/weather', { lat, lon });
+    const { data } = await axios(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    );
     setResponse(data);
   };
 
   useEffect(() => {
-    getGeoCodes('Vancouver');
+    getGeoCodes('Whistler');
   }, []); //eslint-disable-line
 
   useEffect(() => {
-    if (geoCodes.lat && geoCodes.lon) fetchData(geoCodes.lat, geoCodes.lon);
+    if (geoCodes.lat && geoCodes.lon) getWeather(geoCodes.lat, geoCodes.lon);
   }, [geoCodes]); //eslint-disable-line
 
   const getTime = (time) =>
@@ -58,11 +66,14 @@ function App() {
     new Date(dateInSeconds * 1000).toDateString();
 
   return (
-    <div className=' min-h-screen  bg-gradient-to-br from-aqua via-white to-orange'>
+    <div className='min-h-screen bg-gradient-to-br from-aqua via-white to-orange'>
       <Header
         getGeoCodes={getGeoCodes}
+        setGeoCodes={setGeoCodes}
         setCity={setCity}
         city={city}
+        cities={cities}
+        setCities={setCities}
         response={response}
       />
 
@@ -71,7 +82,6 @@ function App() {
           <Current
             geoCodes={geoCodes}
             response={response}
-            getTime={getTime}
             capitalizeFirstLetter={capitalizeFirstLetter}
           />
           <Hourly

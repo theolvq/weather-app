@@ -1,15 +1,15 @@
 const functions = require('firebase-functions');
 const axios = require('axios');
 
-exports.geoCode = functions.https.onRequest(async (req, res) => {
-  const API_KEY = functions.config().api.key;
+const API_KEY = functions.config().api.key;
 
+exports.geoCode = functions.https.onRequest(async (req, res) => {
   const { city } = req.body;
-  // const encodedLocation = encodeURIComponent(location);
+  const encodedCity = encodeURIComponent(city);
 
   try {
     const { data } = await axios(
-      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${encodedCity}&limit=${5}&appid=${API_KEY}`
     );
 
     return res.send(data);
@@ -20,8 +20,6 @@ exports.geoCode = functions.https.onRequest(async (req, res) => {
 });
 
 exports.weather = functions.https.onRequest(async (req, res) => {
-  const API_KEY = functions.config().api.key;
-
   const { lat, lon } = req.body;
   const encodedLat = encodeURIComponent(lat);
   const encodedLon = encodeURIComponent(lon);

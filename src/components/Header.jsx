@@ -2,7 +2,15 @@ import React from 'react';
 import Search from './Search';
 import logo from '../img/logo.png';
 
-function Header({ getGeoCodes, setCity, city, response }) {
+function Header({
+  getGeoCodes,
+  setGeoCodes,
+  setCity,
+  city,
+  cities,
+  setCities,
+  response,
+}) {
   return (
     <header className='flex bg-grey min-w-screen'>
       <img
@@ -12,8 +20,11 @@ function Header({ getGeoCodes, setCity, city, response }) {
       />
       <Search
         getGeoCodes={getGeoCodes}
+        setGeoCodes={setGeoCodes}
         setCity={setCity}
         city={city}
+        cities={cities}
+        setCities={setCities}
         response={response}
       />
     </header>
