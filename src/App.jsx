@@ -22,7 +22,7 @@ function App() {
     if (data.length > 1) {
       setCities(data);
     }
-    if (data[0] && data.length === 1) {
+    if (data.length === 1) {
       setGeoCodes({
         name: data[0].name,
         country: data[0].country,
@@ -77,8 +77,8 @@ function App() {
         response={response}
       />
 
-      <div className='max-w-screen-xl px-8 py-5 mx-auto my-0 '>
-        <div className=' grid lg:grid-cols-4 gap-4 '>
+      <div className='max-w-screen-lg px-8 py-5 mx-auto my-0 '>
+        <div className='md:grid grid-cols-3 xs:flex flex-col gap-4 '>
           <Current
             geoCodes={geoCodes}
             response={response}

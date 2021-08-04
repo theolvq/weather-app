@@ -11,7 +11,7 @@ function Hourly({
 
   const [range, setRange] = useState({
     low: 0,
-    high: Math.round(window.innerWidth / 320 - 1),
+    high: Math.round(window.innerWidth / 400 - 1),
   });
 
   const handlePrevClick = (e) => {
@@ -43,9 +43,9 @@ function Hourly({
   );
 
   return (
-    <div className='col-span-3 text-white flex flex-col  items-center bg-grey bg-opacity-60  backdrop-filter backdrop-blur-lg p-4 shadow-md'>
+    <div className='col-start-2 col-end-4 text-white flex flex-col  items-center bg-grey bg-opacity-60  backdrop-filter backdrop-blur-lg p-4 shadow-md'>
       <h2 className='text-2xl font-light mb-4'>Next 48 hours</h2>
-      <div className='flex items-center gap-4'>
+      <div className='flex items-center gap-2'>
         <button onClick={handlePrevClick} className='h-8 w-8'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
