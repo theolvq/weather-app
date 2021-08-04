@@ -16,7 +16,7 @@ function Header({
       <img
         src={logo}
         alt='open weather logo'
-        className='min-w-0 max-h-24 p-4'
+        className='xs:max-h-20 md:max-h-24 p-4 '
       />
       <Search
         getGeoCodes={getGeoCodes}

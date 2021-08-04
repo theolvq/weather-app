@@ -78,7 +78,7 @@ function App() {
       />
 
       <div className='max-w-screen-lg px-8 py-5 mx-auto my-0 '>
-        <div className='md:grid grid-cols-3 xs:flex flex-col gap-4 '>
+        <div className='grid md:grid-cols-3 xs:grid-cols-1 gap-4 '>
           <Current
             geoCodes={geoCodes}
             response={response}
