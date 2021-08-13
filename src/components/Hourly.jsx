@@ -9,9 +9,11 @@ function Hourly({
 }) {
   const { hourly } = response;
 
+  const maxWidth = window.innerWidth < 1024 ? window.innerWidth : 1024;
+
   const [range, setRange] = useState({
     low: 0,
-    high: Math.round(window.innerWidth / 400 - 1),
+    high: Math.round(maxWidth / 400 - 1),
   });
 
   const handlePrevClick = (e) => {
@@ -52,8 +54,7 @@ function Hourly({
             className='h-6 w-6'
             fill='none'
             viewBox='0 0 24 24'
-            stroke='currentColor'
-          >
+            stroke='currentColor'>
             <path
               strokeLinecap='round'
               strokeLinejoin='round'
@@ -65,8 +66,7 @@ function Hourly({
         {hourlyToShow.map((hour) => (
           <ul
             className='flex flex-col items-center shadow-lg w-44 my-2 p-4 '
-            key={hour.dt}
-          >
+            key={hour.dt}>
             <li className='text-lg'>
               {isToday(hourly[0].dt, hour.dt) ? (
                 <>Today</>
@@ -95,8 +95,7 @@ function Hourly({
             className='h-6 w-6'
             fill='none'
             viewBox='0 0 24 24'
-            stroke='currentColor'
-          >
+            stroke='currentColor'>
             <path
               strokeLinecap='round'
               strokeLinejoin='round'

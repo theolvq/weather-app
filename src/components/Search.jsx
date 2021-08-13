@@ -37,9 +37,8 @@ function Search({
 
   return (
     <form
-      className='flex justify-between items-center gap-3  py-4'
-      onSubmit={handleSubmit}
-    >
+      className='flex justify-between items-center gap-3  p-4'
+      onSubmit={handleSubmit}>
       <div className='flex flex-col relative'>
         <input
           className='w-full text-white bg-grey border-2 border-orange py-2 px-3 rounded-xl focus:bg-white focus:text-grey focus:border-opacity-0 transition duration-500'
@@ -58,8 +57,7 @@ function Search({
                 value={city.name}
                 className='text-white   hover:bg-aqua px-2 py-0.5 rounded-md '
                 id={city.lat}
-                onClick={handleClick}
-              >
+                onClick={handleClick}>
                 {city.name}, {city.country}
                 {city.state && <>, {city.state} </>}
               </li>

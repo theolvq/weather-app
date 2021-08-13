@@ -18,7 +18,6 @@ function App() {
     const { data } = await axios(
       `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`
     );
-    console.log(data);
     if (data.length > 1) {
       setCities(data);
     }
