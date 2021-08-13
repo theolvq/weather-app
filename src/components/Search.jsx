@@ -37,7 +37,7 @@ function Search({
 
   return (
     <form
-      className='flex justify-between items-center gap-3  p-4'
+      className='flex justify-between items-center gap-3  p-4 my-0 mx-auto'
       onSubmit={handleSubmit}>
       <div className='flex flex-col relative'>
         <input
