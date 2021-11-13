@@ -16,8 +16,6 @@ function Search({
   };
 
   const handleClick = (e) => {
-    console.log(e.target);
-    console.log(e.currentTarget);
     const city = cities.find((city) => city.lat === Number(e.target.id));
 
     setGeoCodes({
@@ -38,7 +36,8 @@ function Search({
   return (
     <form
       className='flex justify-between items-center gap-3  p-4 my-0 mx-auto'
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit}
+    >
       <div className='flex flex-col relative'>
         <input
           className='w-full text-white bg-grey border-2 border-orange py-2 px-3 rounded-xl focus:bg-white focus:text-grey focus:border-opacity-0 transition duration-500'
@@ -50,14 +49,15 @@ function Search({
         />
 
         {cities.length > 0 && (
-          <ul className='absolute w-full top-12 bg-grey px-4 pb-2 rounded-b-xl cursor-pointer '>
+          <ul className='absolute z-50 w-full top-12 bg-grey px-4 pb-2 rounded-b-xl cursor-pointer '>
             {cities.map((city) => (
               <li
                 key={city.lat}
                 value={city.name}
                 className='text-white   hover:bg-aqua px-2 py-0.5 rounded-md '
                 id={city.lat}
-                onClick={handleClick}>
+                onClick={handleClick}
+              >
                 {city.name}, {city.country}
                 {city.state && <>, {city.state} </>}
               </li>

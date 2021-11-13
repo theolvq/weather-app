@@ -14,7 +14,7 @@ function App() {
   const getGeoCodes = async (city) => {
     const { data } = await axios.post('/geoCode', { city });
     // const { data } = await axios(
-    //   `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`
+    //   `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`,
     // );
     if (data.length > 1) {
       setCities(data);
@@ -32,7 +32,7 @@ function App() {
   const getWeather = async (lat, lon) => {
     const { data } = await axios.post('/weather', { lat, lon });
     // const { data } = await axios(
-    //   `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`
+    //   `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`,
     // );
     setResponse(data);
   };
