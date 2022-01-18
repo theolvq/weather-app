@@ -5,15 +5,17 @@ import Daily from './components/Daily';
 import Hourly from './components/Hourly';
 import Header from './components/Header';
 
-const geoCodeURL =
-  process.env.NODE_ENV === 'production'
-    ? '/geoCode'
-    : process.env.REACT_APP_GEOCODE_URL;
+// const geoCodeURL =
+//   process.env.NODE_ENV === 'production'
+//     ? '/geoCode'
+//     : process.env.REACT_APP_GEOCODE_URL;
 
-const weatherURL =
-  process.env.NODE_ENV === 'production'
-    ? '/weather'
-    : process.env.REACT_APP_WEATHER_URL;
+// const weatherURL =
+//   process.env.NODE_ENV === 'production'
+//     ? '/weather'
+//     : process.env.REACT_APP_WEATHER_URL;
+
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 function App() {
   const [city, setCity] = useState('');
@@ -22,10 +24,10 @@ function App() {
   const [response, setResponse] = useState({});
 
   const getGeoCodes = async (city) => {
-    const { data } = await axios.post(geoCodeURL, { city });
-    // const { data } = await axios(
-    //   `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`,
-    // );
+    // const { data } = await axios.post(geoCodeURL, { city });
+    const { data } = await axios(
+      `https://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=${5}&appid=${API_KEY}`,
+    );
     if (data.length > 1) {
       setCities(data);
     }
@@ -40,10 +42,10 @@ function App() {
   };
 
   const getWeather = async (lat, lon) => {
-    const { data } = await axios.post(weatherURL, { lat, lon });
-    // const { data } = await axios(
-    //   `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`,
-    // );
+    // const { data } = await axios.post(weatherURL, { lat, lon });
+    const { data } = await axios(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`,
+    );
     setResponse(data);
   };
 
