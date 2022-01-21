@@ -1,6 +1,7 @@
 import React from 'react';
+import { getDate, getTime, capitalizeFirstLetter, isToday } from '../utils';
 
-function Daily({ response, getDate, getTime, capitalizeFirstLetter, isToday }) {
+export default function Daily({ response }) {
   const { daily } = response;
   if (!daily) {
     return null;
@@ -81,5 +82,3 @@ function Daily({ response, getDate, getTime, capitalizeFirstLetter, isToday }) {
     </div>
   );
 }
-
-export default Daily;

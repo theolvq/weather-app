@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-function Search({
+export default function Search({
   getGeoCodes,
   setGeoCodes,
   city,
@@ -79,5 +79,3 @@ function Search({
     </form>
   );
 }
-
-export default Search;

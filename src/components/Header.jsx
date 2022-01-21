@@ -2,7 +2,7 @@ import React from 'react';
 import Search from './Search';
 import logo from '../img/logo.png';
 
-function Header({
+export default function Header({
   getGeoCodes,
   setGeoCodes,
   setCity,
@@ -30,5 +30,3 @@ function Header({
     </header>
   );
 }
-
-export default Header;

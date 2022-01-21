@@ -1,6 +1,7 @@
 import React from 'react';
+import { capitalizeFirstLetter } from '../utils';
 
-function Current({ geoCodes, response, capitalizeFirstLetter }) {
+export default function Current({ geoCodes, response }) {
   const { current } = response;
   if (!current) {
     return null;
@@ -35,5 +36,3 @@ function Current({ geoCodes, response, capitalizeFirstLetter }) {
     </div>
   );
 }
-
-export default Current;

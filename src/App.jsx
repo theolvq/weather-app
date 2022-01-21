@@ -38,7 +38,7 @@ function App() {
 
   const getWeather = async (lat, lon) => {
     const { data } = await axios.post(weatherURL, { lat, lon });
-
+    console.log(data);
     setResponse(data);
   };
 
@@ -50,25 +50,8 @@ function App() {
     if (geoCodes.lat && geoCodes.lon) getWeather(geoCodes.lat, geoCodes.lon);
   }, [geoCodes]); //eslint-disable-line
 
-  const getTime = (time) =>
-    new Date(time * 1000).toLocaleTimeString(undefined, {
-      hour: '2-digit',
-      minute: '2-digit',
-    });
-  const getDate = (time) =>
-    new Date(time * 1000).toLocaleDateString(undefined, {
-      day: '2-digit',
-      month: 'long',
-    });
-  const capitalizeFirstLetter = (str) =>
-    `${str[0].toUpperCase()}${str.slice(1)}`;
-
-  const isToday = (currentDayInSeconds, dateInSeconds) =>
-    new Date(currentDayInSeconds * 1000).toDateString() ===
-    new Date(dateInSeconds * 1000).toDateString();
-
   return (
-    <div className='min-h-screen bg-gradient-to-br from-aqua via-white to-orange'>
+    <main className='min-h-screen bg-gradient-to-br from-aqua via-white to-orange'>
       <Header
         getGeoCodes={getGeoCodes}
         setGeoCodes={setGeoCodes}
@@ -79,32 +62,16 @@ function App() {
         response={response}
       />
 
-      <div className='max-w-screen-lg px-8 py-5 mx-auto my-0 '>
+      <section className='max-w-screen-lg px-8 py-5 mx-auto my-0 '>
         <div className='grid md:grid-cols-3 xs:grid-cols-1 gap-4 '>
-          <Current
-            geoCodes={geoCodes}
-            response={response}
-            capitalizeFirstLetter={capitalizeFirstLetter}
-          />
-          <Hourly
-            response={response}
-            getTime={getTime}
-            getDate={getDate}
-            capitalizeFirstLetter={capitalizeFirstLetter}
-            isToday={isToday}
-          />
+          <Current geoCodes={geoCodes} response={response} />
+          <Hourly response={response} />
         </div>
         <div className='my-4'>
-          <Daily
-            response={response}
-            getDate={getDate}
-            getTime={getTime}
-            capitalizeFirstLetter={capitalizeFirstLetter}
-            isToday={isToday}
-          />
+          <Daily response={response} />
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 }
 

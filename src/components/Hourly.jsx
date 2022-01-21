@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
+import { capitalizeFirstLetter, isToday, getTime, getDate } from '../utils';
 
-function Hourly({
-  response,
-  getTime,
-  getDate,
-  capitalizeFirstLetter,
-  isToday,
-}) {
+export default function Hourly({ response }) {
   const { hourly } = response;
 
   const maxWidth = window.innerWidth < 1024 ? window.innerWidth : 1024;
@@ -108,5 +103,3 @@ function Hourly({
     </div>
   );
 }
-
-export default Hourly;
