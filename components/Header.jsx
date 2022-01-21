@@ -14,9 +14,9 @@ export default function Header({
 }) {
   return (
     <header className='flex bg-white bg-opacity-20 backdrop-filter backdrop-blur-md min-w-screen p-2'>
-      <div className='xs:max-h-20 md:max-h-24 w-48 relative'>
+      {/* <div className='xs:max-h-20 md:max-h-24 w-48 relative'>
         <Image src={logo} alt='open weather logo' layout='fill' priority />
-      </div>
+      </div> */}
       <Search
         getGeoCodes={getGeoCodes}
         setGeoCodes={setGeoCodes}

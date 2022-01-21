@@ -5,7 +5,7 @@
     @apply text-2xl;
   }
   h2 {
-    @apply text-xl;
+    @apply text-xl text-center mb-4;
   }
   h3 {
     @apply text-lg;
@@ -16,7 +16,7 @@
 
 @layer components {
   .card {
-    @apply bg-white bg-opacity-20 backdrop-filter backdrop-blur-md text-grey p-4 rounded-md shadow-md;
+    @apply bg-white bg-opacity-40 backdrop-filter backdrop-blur-md text-grey p-4 rounded-md shadow-md;
   }
 
   .svg-icon {
@@ -24,7 +24,7 @@
   }
 
   .main-bg {
-    background-image: url('https://images.unsplash.com/photo-1609789887552-fa440754d322?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=606&q=80');
+    background-image: url('https://images.unsplash.com/photo-1512641406448-6574e777bec6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80');
     background-size: cover;
   }
 

@@ -10,7 +10,7 @@ export default function Current({ geoCodes, response }) {
 
   return (
     <div className='card flex flex-col items-center min-w-min'>
-      <h2 className='text-2xl font-light mb-4'>Now</h2>
+      <h2 className='text-2xl'>Now</h2>
       <div className='mx-2 p-4 w-10/12'>
         <h1 className='font-bold text-xl text-center'>
           {geoCodes.name}, {geoCodes.country}
@@ -20,7 +20,7 @@ export default function Current({ geoCodes, response }) {
           <li className='font-normal text-6xl '>
             {response.current.temp.toFixed()}°C
           </li>
-          <li>
+          <li className='flex items-center'>
             <Image
               className='inline pb-2'
               src={`http://openweathermap.org/img/wn/${response.current.weather[0].icon}.png`}

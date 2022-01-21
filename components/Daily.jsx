@@ -13,7 +13,7 @@ export default function Daily({ response }) {
       {daily.map((day) => (
         <ul className='card' key={day.dt}>
           <li>
-            <h2 className='text-xl text-center font-light mb-4'>
+            <h2>
               {isToday(daily[0].dt, day.dt) ? (
                 <>Today</>
               ) : (
