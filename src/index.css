@@ -10,10 +10,17 @@
   h3 {
     @apply text-lg;
   }
-
 }
 
 @tailwind components;
+
+@layer components {
+  .card {
+    @apply bg-white text-grey p-4 rounded-md shadow-md;
+  }
+
+  .svg-icon {
+    @apply w-6 h-6 inline fill-current text-grey;
+  }
+}
 @tailwind utilities;
-
-

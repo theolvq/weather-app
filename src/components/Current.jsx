@@ -7,9 +7,9 @@ function Current({ geoCodes, response, capitalizeFirstLetter }) {
   }
 
   return (
-    <div className='bg-grey bg-opacity-60 text-white p-4  shadow-md flex flex-col  items-center min-w-min'>
+    <div className='card flex flex-col items-center min-w-min'>
       <h2 className='text-2xl font-light mb-4'>Now</h2>
-      <div className='mx-2 p-4 shadow-lg w-10/12'>
+      <div className='mx-2 p-4 w-10/12'>
         <h1 className='font-bold text-xl text-center'>
           {geoCodes.name}, {geoCodes.country}
           {geoCodes.state && <>, {geoCodes.state}</>}

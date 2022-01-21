@@ -41,11 +41,11 @@ function Hourly({
   }
 
   const hourlyToShow = hourly.filter(
-    (_, i) => i >= range.low && i <= range.high
+    (_, i) => i >= range.low && i <= range.high,
   );
 
   return (
-    <div className='md:col-start-2 md:col-end-4 text-white flex flex-col  items-center bg-grey bg-opacity-60  backdrop-filter backdrop-blur-lg p-4 shadow-md'>
+    <div className='md:col-start-2 md:col-end-4 flex flex-col items-center card'>
       <h2 className='text-2xl font-light mb-4'>Next 48 hours</h2>
       <div className='flex items-center gap-2'>
         <button onClick={handlePrevClick} className='h-8 w-8'>
@@ -54,7 +54,8 @@ function Hourly({
             className='h-6 w-6'
             fill='none'
             viewBox='0 0 24 24'
-            stroke='currentColor'>
+            stroke='currentColor'
+          >
             <path
               strokeLinecap='round'
               strokeLinejoin='round'
@@ -64,9 +65,7 @@ function Hourly({
           </svg>
         </button>
         {hourlyToShow.map((hour) => (
-          <ul
-            className='flex flex-col items-center shadow-lg w-44 my-2 p-4 '
-            key={hour.dt}>
+          <ul className='flex flex-col items-center card w-44' key={hour.dt}>
             <li className='text-lg'>
               {isToday(hourly[0].dt, hour.dt) ? (
                 <>Today</>
@@ -95,7 +94,8 @@ function Hourly({
             className='h-6 w-6'
             fill='none'
             viewBox='0 0 24 24'
-            stroke='currentColor'>
+            stroke='currentColor'
+          >
             <path
               strokeLinecap='round'
               strokeLinejoin='round'
