@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import Search from './Search';
 import logo from '../img/logo.png';
@@ -12,12 +13,10 @@ export default function Header({
   response,
 }) {
   return (
-    <header className='flex bg-grey min-w-screen'>
-      <img
-        src={logo}
-        alt='open weather logo'
-        className='xs:max-h-20 md:max-h-24 p-4 '
-      />
+    <header className='flex bg-grey min-w-screen p-2'>
+      <div className='xs:max-h-20 md:max-h-24 w-48 relative'>
+        <Image src={logo} alt='open weather logo' layout='fill' priority />
+      </div>
       <Search
         getGeoCodes={getGeoCodes}
         setGeoCodes={setGeoCodes}

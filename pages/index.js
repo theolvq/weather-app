@@ -5,22 +5,14 @@ import Daily from '../components/Daily';
 import Hourly from '../components/Hourly';
 import Header from '../components/Header';
 
-const geoCodeURL =
-  process.env.NODE_ENV === 'production' ? '/geoCode' : process.env.GEOCODE_URL;
-
-const weatherURL =
-  process.env.NODE_ENV === 'production' ? '/weather' : process.env.WEATHER_URL;
-
 export default function Home() {
   const [city, setCity] = useState('');
   const [cities, setCities] = useState([]);
   const [geoCodes, setGeoCodes] = useState({});
   const [response, setResponse] = useState({});
 
-  console.log(geoCodeURL);
-
   const getGeoCodes = async (city) => {
-    const { data } = await axios.post(geoCodeURL, { city });
+    const { data } = await axios.post('/api/geocodes', { city });
     if (data.length > 1) {
       setCities(data);
     }
@@ -35,8 +27,7 @@ export default function Home() {
   };
 
   const getWeather = async (lat, lon) => {
-    const { data } = await axios.post(weatherURL, { lat, lon });
-    console.log(data);
+    const { data } = await axios.post('/api/weather', { lat, lon });
     setResponse(data);
   };
 

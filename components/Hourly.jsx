@@ -8,13 +8,9 @@ export default function Hourly({ response }) {
     return null;
   }
 
-  const hourlyToShow = hourly.filter(
-    (_, i) => i >= range.low && i <= range.high,
-  );
-
   return (
     <div className='md:col-start-2 md:col-end-4 flex flex-col items-center card'>
-      <h2 className='text-2xl font-light mb-4'>Next 48 hours</h2>
+      {/* <h2 className='text-2xl font-light mb-4'>Next 48 hours</h2>
       <div className='flex items-center gap-2'>
         <button onClick={handlePrevClick} className='h-8 w-8'>
           <svg
@@ -72,7 +68,7 @@ export default function Hourly({ response }) {
             />
           </svg>
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
