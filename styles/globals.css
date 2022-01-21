@@ -16,7 +16,7 @@
 
 @layer components {
   .card {
-    @apply bg-white bg-opacity-20 backdrop-filter backdrop-blur-2xl text-grey p-4 rounded-md shadow-md;
+    @apply bg-white bg-opacity-20 backdrop-filter backdrop-blur-md text-grey p-4 rounded-md shadow-md;
   }
 
   .svg-icon {

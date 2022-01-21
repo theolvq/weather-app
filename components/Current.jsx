@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { capitalizeFirstLetter } from '../utils';
 
@@ -20,10 +21,12 @@ export default function Current({ geoCodes, response }) {
             {response.current.temp.toFixed()}°C
           </li>
           <li>
-            <img
+            <Image
               className='inline pb-2'
               src={`http://openweathermap.org/img/wn/${response.current.weather[0].icon}.png`}
               alt={`${response.current.weather[0].description} icon`}
+              width={50}
+              height={50}
             />
             {capitalizeFirstLetter(response.current.weather[0].description)}
           </li>

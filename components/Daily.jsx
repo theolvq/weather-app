@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 import { getDate, getTime, capitalizeFirstLetter, isToday } from '../utils';
 
@@ -22,10 +23,12 @@ export default function Daily({ response }) {
           </li>
           <div className='flex flex-col items-center gap-2'>
             <li className='flex items-center'>
-              <img
+              <Image
                 className='inline'
                 src={`http://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
                 alt={`${day.weather[0].description} icon`}
+                width={50}
+                height={50}
               />
               {capitalizeFirstLetter(day.weather[0].description)}
             </li>

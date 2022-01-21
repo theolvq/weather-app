@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async function handler(req, res) {
+export default async function weatherHandler(req, res) {
   const { lat, lon } = req.body;
 
   try {

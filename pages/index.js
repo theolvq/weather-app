@@ -29,6 +29,7 @@ export default function Home() {
   const getWeather = async (lat, lon) => {
     const { data } = await axios.post('/api/weather', { lat, lon });
     setResponse(data);
+    console.log(data);
   };
 
   useEffect(() => {

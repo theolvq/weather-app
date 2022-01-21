@@ -13,7 +13,7 @@ export default function Header({
   response,
 }) {
   return (
-    <header className='flex bg-grey min-w-screen p-2'>
+    <header className='flex bg-white bg-opacity-20 backdrop-filter backdrop-blur-md min-w-screen p-2'>
       <div className='xs:max-h-20 md:max-h-24 w-48 relative'>
         <Image src={logo} alt='open weather logo' layout='fill' priority />
       </div>

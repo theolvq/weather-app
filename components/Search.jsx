@@ -48,7 +48,7 @@ export default function Search({
     >
       <div className='flex flex-col relative'>
         <input
-          className='sm:w-80 w-full text-white bg-grey border-2 border-orange py-2 px-3 rounded-xl focus:bg-white focus:text-grey focus:border-opacity-0 transition duration-500'
+          className='sm:w-80 w-full text-grey bg-white bg-opacity-20 border-2 border-orange py-2 px-3 rounded-xl  focus:bg-opacity-100 focus:border-opacity-0 transition duration-500'
           placeholder='Search for a city'
           type='text'
           name='city'
