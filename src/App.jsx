@@ -15,7 +15,7 @@ const weatherURL =
     ? '/weather'
     : process.env.REACT_APP_WEATHER_URL;
 
-function App() {
+export default function App() {
   const [city, setCity] = useState('');
   const [cities, setCities] = useState([]);
   const [geoCodes, setGeoCodes] = useState({});
@@ -51,7 +51,7 @@ function App() {
   }, [geoCodes]); //eslint-disable-line
 
   return (
-    <main className='min-h-screen bg-gradient-to-br from-aqua via-white to-orange'>
+    <main className='min-h-screen main-bg'>
       <Header
         getGeoCodes={getGeoCodes}
         setGeoCodes={setGeoCodes}
@@ -74,5 +74,3 @@ function App() {
     </main>
   );
 }
-
-export default App;
