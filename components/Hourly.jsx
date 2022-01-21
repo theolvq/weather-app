@@ -4,33 +4,6 @@ import { capitalizeFirstLetter, isToday, getTime, getDate } from '../utils';
 export default function Hourly({ response }) {
   const { hourly } = response;
 
-  const maxWidth = window.innerWidth < 1024 ? window.innerWidth : 1024;
-
-  const [range, setRange] = useState({
-    low: 0,
-    high: Math.round(maxWidth / 400 - 1),
-  });
-
-  const handlePrevClick = (e) => {
-    if (range.low > 0) {
-      setRange({
-        ...range,
-        low: range.low - 1,
-        high: range.high - 1,
-      });
-    }
-  };
-
-  const handleNextClick = (e) => {
-    if (range.high < hourly.length - 1) {
-      setRange({
-        ...range,
-        low: range.low + 1,
-        high: range.high + 1,
-      });
-    }
-  };
-
   if (!hourly) {
     return null;
   }

@@ -1,25 +1,23 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Current from './components/Current';
-import Daily from './components/Daily';
-import Hourly from './components/Hourly';
-import Header from './components/Header';
+import Current from '../components/Current';
+import Daily from '../components/Daily';
+import Hourly from '../components/Hourly';
+import Header from '../components/Header';
 
 const geoCodeURL =
-  process.env.NODE_ENV === 'production'
-    ? '/geoCode'
-    : process.env.REACT_APP_GEOCODE_URL;
+  process.env.NODE_ENV === 'production' ? '/geoCode' : process.env.GEOCODE_URL;
 
 const weatherURL =
-  process.env.NODE_ENV === 'production'
-    ? '/weather'
-    : process.env.REACT_APP_WEATHER_URL;
+  process.env.NODE_ENV === 'production' ? '/weather' : process.env.WEATHER_URL;
 
-export default function App() {
+export default function Home() {
   const [city, setCity] = useState('');
   const [cities, setCities] = useState([]);
   const [geoCodes, setGeoCodes] = useState({});
   const [response, setResponse] = useState({});
+
+  console.log(geoCodeURL);
 
   const getGeoCodes = async (city) => {
     const { data } = await axios.post(geoCodeURL, { city });

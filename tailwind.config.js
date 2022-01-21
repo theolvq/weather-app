@@ -1,24 +1,20 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
-
 module.exports = {
-  purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  content: [
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
-    extend: {},
-    colors: {
-      orange: '#eb6e4b',
-      grey: '#48484a',
-      white: '#fff',
-      aqua: '#59CDBE',
+    extend: {
+      colors: {
+        orange: '#eb6e4b',
+        grey: '#48484a',
+        white: '#fff',
+        aqua: '#59CDBE',
+      },
+      screens: {
+        xs: '360px',
+      },
     },
-    screens: {
-      xs: '360px',
-      ...defaultTheme.screens,
-    },
-  },
-  variants: {
-    extend: {},
-    fill: ['hover', 'focus'],
   },
   plugins: [],
 };
