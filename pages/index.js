@@ -4,6 +4,7 @@ import Current from '../components/Current';
 import Daily from '../components/Daily';
 import Hourly from '../components/Hourly';
 import Header from '../components/Header';
+import Chart from '../components/Chart';
 
 export default function Home() {
   const [city, setCity] = useState('');
@@ -55,7 +56,8 @@ export default function Home() {
       <section className='max-w-screen-lg px-8 py-5 mx-auto my-0 '>
         <div className='grid md:grid-cols-3 xs:grid-cols-1 gap-4 '>
           <Current geoCodes={geoCodes} response={response} />
-          <Hourly response={response} />
+          <Chart response={response} />
+          {/* <Hourly response={response} /> */}
         </div>
         <div className='my-4'>
           <Daily response={response} />
