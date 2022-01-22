@@ -31,5 +31,9 @@
   .daily-list {
     @apply flex w-3/5 justify-between items-center;
   }
+
+  .tooltip {
+    @apply absolute hidden;
+  }
 }
 @tailwind utilities;

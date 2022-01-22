@@ -9,7 +9,7 @@ export default function Daily({ response }) {
   }
 
   return (
-    <div className='grid md:grid-cols-4 gap-4'>
+    <>
       {daily.map((day) => (
         <ul className='card' key={day.dt}>
           <li>
@@ -80,6 +80,6 @@ export default function Daily({ response }) {
           </div>
         </ul>
       ))}
-    </div>
+    </>
   );
 }

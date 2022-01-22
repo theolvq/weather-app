@@ -53,15 +53,11 @@ export default function Home() {
         response={response}
       />
 
-      <section className='max-w-screen-lg px-8 py-5 mx-auto my-0 '>
-        <div className='grid md:grid-cols-3 xs:grid-cols-1 gap-4 '>
-          <Current geoCodes={geoCodes} response={response} />
-          <Chart response={response} />
-          {/* <Hourly response={response} /> */}
-        </div>
-        <div className='my-4'>
-          <Daily response={response} />
-        </div>
+      <section className='max-w-screen-lg px-8 py-5 mx-auto my-0 grid md:grid-cols-4 gap-4 '>
+        <Current geoCodes={geoCodes} response={response} />
+        <Chart response={response} />
+        {/* <Hourly response={response} /> */}
+        <Daily response={response} />
       </section>
     </main>
   );
