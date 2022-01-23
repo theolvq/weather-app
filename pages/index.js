@@ -53,7 +53,7 @@ export default function Home() {
         response={response}
       />
 
-      <section className='max-w-screen-lg px-8 py-5 mx-auto my-0 grid md:grid-cols-4 gap-4 '>
+      <section className='max-w-screen-xl px-8 py-5 mx-auto my-0 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4  gap-4 '>
         <Current geoCodes={geoCodes} response={response} />
         <Chart response={response} />
         {/* <Hourly response={response} /> */}

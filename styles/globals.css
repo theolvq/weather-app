@@ -1,6 +1,9 @@
 @tailwind base;
 
 @layer base {
+  body {
+    @apply text-slate-800;
+  }
   h1 {
     @apply text-2xl;
   }
@@ -9,6 +12,10 @@
   }
   h3 {
     @apply text-lg;
+  }
+
+  svg {
+    @apply fill-current;
   }
 }
 
@@ -43,8 +50,15 @@
   }
 
   .dot {
-    @apply fill-slate-200 stroke-transparent stroke-[0.75rem];
-    @apply hover:fill-slate-300;
+    @apply opacity-0  stroke-transparent stroke-[0.75rem];
+    @apply hover:fill-slate-300 hover:opacity-100;
+  }
+  .label {
+    @apply text-sm;
+  }
+
+  .label-title {
+    @apply text-xl;
   }
 }
 @tailwind utilities;

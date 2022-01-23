@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { svg } from 'd3';
+import Image from 'next/image';
 
 export default function Chart({ response }) {
   const d3Chart = useRef(null);
@@ -14,7 +15,7 @@ export default function Chart({ response }) {
       const temps = hourly.map((d) => d.temp);
 
       // Create Graph
-      const margin = { top: 20, right: 40, bottom: 30, left: 30 };
+      const margin = { top: 32, right: 40, bottom: 32, left: 24 };
       const width =
         chart.parentNode.getBoundingClientRect().width -
         margin.left -
@@ -26,8 +27,7 @@ export default function Chart({ response }) {
       const svg = d3
         .select(chart)
         .attr('viewBox', [0, 0, viewBoxWidth, viewBoxHeight])
-        // .attr('width', width + margin.left + margin.right)
-        // .attr('height', height + margin.top + margin.bottom)
+        // .attr('preserveAspectRatio', 'xMinYMin meet')
         .append('g')
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
@@ -41,10 +41,35 @@ export default function Chart({ response }) {
       const y = d3
         .scaleLinear()
         .domain([d3.min(temps) - 2, d3.max(temps) + 2])
-
         .range([height, 0]);
 
       svg.append('g').call(d3.axisLeft(y));
+
+      // Graph Label
+      svg
+        .append('text')
+        .attr('class', 'label-title')
+        .attr('x', width / 2)
+        .attr('y', -margin.top / 8)
+        .attr('text-anchor', 'middle')
+        .text('Next 48 hours');
+
+      //  X axis label
+      svg
+        .append('text')
+        .attr('class', 'label')
+        .attr('x', width / 2)
+        .attr('y', height + margin.bottom)
+        .attr('text-anchor', 'middle')
+        .text('Time');
+
+      //  Y axis label
+      svg
+        .append('text')
+        .attr('class', 'label')
+        .attr('x', 0 - margin.left)
+        .attr('y', 0 - margin.top / 4)
+        .text('Temp (°C)');
 
       // Create Line
       const line = svg
@@ -88,7 +113,8 @@ export default function Chart({ response }) {
                 hour: 'numeric',
                 minute: 'numeric',
               },
-            )}`,
+            )}             
+            `,
           );
       }
 
@@ -115,7 +141,7 @@ export default function Chart({ response }) {
   });
 
   return (
-    <div id='d3-chart' className='relative md:col-span-3 md:col-start-2 card'>
+    <div id='d3-chart' className='relative sm:col-span-2 lg:col-span-3  card'>
       <svg ref={d3Chart} />
     </div>
   );
