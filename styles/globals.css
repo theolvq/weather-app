@@ -29,11 +29,22 @@
   }
 
   .daily-list {
-    @apply flex w-3/5 justify-between items-center;
+    @apply flex w-3/5 justify-between items-center z-10;
+  }
+
+  .line {
+    @apply stroke-slate-700 fill-transparent stroke-[0.25rem];
+    /* @apply hover:stroke-[0.5rem] transition-all duration-200 ease-in-out; */
   }
 
   .tooltip {
-    @apply absolute hidden;
+    @apply opacity-0 absolute w-24 h-12 bg-black rounded-full text-white text-xs font-bold text-center flex items-center justify-center;
+    @apply transition-opacity duration-500 ease-in-out;
+  }
+
+  .dot {
+    @apply fill-slate-200 stroke-transparent stroke-[0.75rem];
+    @apply hover:fill-slate-300;
   }
 }
 @tailwind utilities;

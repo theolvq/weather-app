@@ -33,7 +33,6 @@ export default function Chart({ response }) {
 
       // Create Axis
       const x = d3.scaleTime().domain(d3.extent(dates)).range([0, width]);
-
       svg
         .append('g')
         .attr('transform', `translate(0, ${height})`)
@@ -41,7 +40,8 @@ export default function Chart({ response }) {
 
       const y = d3
         .scaleLinear()
-        .domain([d3.max(temps) + 2, d3.min(temps) - 2])
+        .domain([d3.min(temps) - 2, d3.max(temps) + 2])
+
         .range([height, 0]);
 
       svg.append('g').call(d3.axisLeft(y));
@@ -50,9 +50,7 @@ export default function Chart({ response }) {
       const line = svg
         .append('path')
         .datum(hourly)
-        .attr('fill', 'none')
-        .attr('stroke', 'steelblue')
-        .attr('stroke-width', 5)
+        .attr('class', 'line')
         .attr(
           'd',
           d3
@@ -60,24 +58,55 @@ export default function Chart({ response }) {
             .x((d) => x(d.dt * 1000))
             .y((d) => y(d.temp)),
         );
-      // Create tooltip
-      const tooltip = d3.select(chart).append('div').attr('class', 'tooltip');
+
+      const circles = svg
+        .append('g')
+        .selectAll('circle')
+        .data(hourly)
+        .enter()
+        .append('circle')
+        .attr('cx', (d) => x(d.dt * 1000))
+        .attr('cy', (d) => y(d.temp))
+        .attr('r', 4)
+        .attr('class', 'dot');
+
       // Hover effects
-      line.on('mouseover', () => {
-        line
-          .transition()
-          .duration(200)
-          .attr('stroke-width', 8)
-          .ease(d3.easeBackInOut);
-        tooltip.style('hidden', false);
-      });
-      line.on('mouseout', () => {
-        line
-          .transition()
-          .duration(200)
-          .attr('stroke-width', 5)
-          .ease(d3.easeBackInOut);
-      });
+      function onMouseOver(event, d) {
+        const [x, y] = d3.pointer(event);
+
+        d3.select('#d3-chart')
+          .append('div')
+          .attr('class', 'tooltip')
+          .attr('r', 6)
+          .style('opacity', 1)
+          .style('left', `${x - width + 40}px`)
+          .style('top', `${y - height + 40}px`)
+          .html(
+            `${d.temp}°C <br/> at ${new Date(d.dt * 1000).toLocaleTimeString(
+              'en-CA',
+              {
+                hour: 'numeric',
+                minute: 'numeric',
+              },
+            )}`,
+          );
+      }
+
+      function onMouseMove(event, d) {
+        const [x, y] = d3.pointer(event);
+
+        d3.select('.tooltip')
+          .style('left', `${x + 40}px`)
+          .style('top', `${y + 40}px`);
+      }
+
+      function onMouseOut() {
+        d3.select('.tooltip').style('opacity', 0).remove();
+      }
+      circles
+        .on('mouseover', onMouseOver)
+        .on('mouseout', onMouseOut)
+        .on('mousemove', onMouseMove);
     }
 
     return () => {
@@ -86,7 +115,7 @@ export default function Chart({ response }) {
   });
 
   return (
-    <div id='d3-chart' className='md:col-span-3 md:col-start-2 card'>
+    <div id='d3-chart' className='relative md:col-span-3 md:col-start-2 card'>
       <svg ref={d3Chart} />
     </div>
   );

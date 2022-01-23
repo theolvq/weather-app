@@ -42,7 +42,7 @@ export default function Home() {
   }, [geoCodes]); //eslint-disable-line
 
   return (
-    <main className='min-h-screen main-bg'>
+    <main className='relative min-h-screen main-bg'>
       <Header
         getGeoCodes={getGeoCodes}
         setGeoCodes={setGeoCodes}
