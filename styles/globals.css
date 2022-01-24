@@ -23,11 +23,11 @@
 
 @layer components {
   .card {
-    @apply bg-white bg-opacity-40 backdrop-filter backdrop-blur-md text-grey p-4 rounded-md shadow-md;
+    @apply bg-slate-50 bg-opacity-40  backdrop-filter backdrop-blur-md  text-slate-700 p-4 rounded-md shadow-lg;
   }
 
   .svg-icon {
-    @apply w-6 h-6 inline fill-current text-grey;
+    @apply w-6 h-6 inline fill-current text-slate-700;
   }
 
   .main-bg {
@@ -36,22 +36,24 @@
   }
 
   .daily-list {
-    @apply flex w-3/5 justify-between items-center z-10;
+    @apply flex w-3/5 justify-between items-center;
   }
 
   .line {
-    @apply stroke-slate-700 fill-transparent stroke-[0.25rem];
+    @apply stroke-slate-600 fill-transparent stroke-[0.25rem];
     /* @apply hover:stroke-[0.5rem] transition-all duration-200 ease-in-out; */
   }
 
   .tooltip {
-    @apply opacity-0 absolute w-24 h-12 bg-black rounded-full text-white text-xs font-bold text-center flex items-center justify-center;
+    @apply bg-slate-50  text-slate-700 p-4 rounded-md shadow-lg;
+    @apply absolute z-50 text-xs font-semibold text-center;
     @apply transition-opacity duration-500 ease-in-out;
+    @apply flex flex-col items-center max-w-[6rem];
   }
 
   .dot {
     @apply opacity-0  stroke-transparent stroke-[0.75rem];
-    @apply hover:fill-slate-300 hover:opacity-100 hover:cursor-pointer;
+    @apply hover:fill-slate-200 hover:opacity-100 hover:cursor-pointer transition-all duration-200 ease-in-out;
   }
   .label {
     @apply text-sm;
@@ -61,4 +63,18 @@
     @apply text-xl;
   }
 }
+
 @tailwind utilities;
+
+@layer utilities {
+  .z--10 {
+    z-index: -10;
+  }
+  .z--20 {
+    z-index: -20;
+  }
+
+  .z-100 {
+    z-index: 100;
+  }
+}

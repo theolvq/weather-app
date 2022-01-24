@@ -5,12 +5,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        orange: '#eb6e4b',
-        grey: '#242429',
-        white: '#fff',
-        aqua: '#59CDBE',
-      },
       screens: {
         xs: '360px',
       },

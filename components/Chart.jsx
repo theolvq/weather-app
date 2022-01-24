@@ -106,13 +106,20 @@ export default function Chart({ response }) {
           .style('left', `${x - width + 40}px`)
           .style('top', `${y - height + 40}px`)
           .html(
-            `${d.temp}°C <br/> at ${new Date(d.dt * 1000).toLocaleTimeString(
-              'en-CA',
-              {
-                hour: 'numeric',
-                minute: 'numeric',
-              },
-            )}             
+            `${d.temp}°C <br/> 
+             <img
+              src=${`http://openweathermap.org/img/wn/${d.weather[0].icon}.png`}
+              alt=${d.weather[0].description}
+              width="25"
+              height="25"
+             /> ${d.weather[0].main}, <br/>
+            on ${new Date(d.dt * 1000).toLocaleDateString('en-CA', {
+              day: 'numeric',
+              month: 'short',
+            })} at ${new Date(d.dt * 1000).toLocaleTimeString('en-CA', {
+              hour: 'numeric',
+              minute: 'numeric',
+            })}             
             `,
           );
       }
@@ -142,7 +149,7 @@ export default function Chart({ response }) {
   return (
     <div
       id='d3-chart'
-      className='sm:col-span-2 lg:col-span-3 card relative z-50'
+      className='sm:col-span-2 lg:col-span-3 card relative z-0'
     >
       <svg ref={d3Chart} />
     </div>

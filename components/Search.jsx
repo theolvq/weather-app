@@ -40,13 +40,10 @@ export default function Search({
   }, [city]); //eslint-disable-line
 
   return (
-    <form
-      className='flex justify-between items-center gap-3  p-4 my-0 mx-auto'
-      onSubmit={handleSubmit}
-    >
+    <form className='flex items-center gap-4' onSubmit={handleSubmit}>
       <div className='flex flex-col relative z-50'>
         <input
-          className='sm:w-80 w-full z-40 text-grey placeholder:text-grey bg-white border-2 border-orange py-2 px-3 rounded-md  focus:bg-opacity-100 focus:border-opacity-0 transition duration-500'
+          className='sm:w-80 w-full text-slate-700 bg-opacity-0 placeholder:text-slate-100 bg-slate-50 border-2 border-blue-700 py-2 px-3 rounded-md  hover:scale-105 focus:bg-opacity-100 focus:border-opacity-0 focus:placeholder:text-slate-700 transition duration-300 ease-in-out'
           placeholder='Search for a city'
           type='text'
           name='city'
@@ -56,12 +53,12 @@ export default function Search({
         />
 
         {cities.length > 0 && (
-          <ul className='absolute z-30 w-full top-10 pt-2 bg-grey px-4 pb-2 rounded-b-md cursor-pointer '>
+          <ul className='absolute z-40 w-full top-10 pt-2 bg-slate-800  pb-2 rounded-b-md cursor-pointer backdrop-filter backdrop-blur-md'>
             {cities.map((city) => (
               <li
                 key={city.lat}
                 value={city.name}
-                className='text-white hover:bg-aqua px-2 py-0.5 rounded-md'
+                className='text-slate-50 hover:bg-blue-700 px-4 py-0.5 rounded-md'
                 id={city.lat}
                 onClick={handleClick}
               >
@@ -72,7 +69,7 @@ export default function Search({
           </ul>
         )}
       </div>
-      <button className='xs:hidden md:block  border-2 border-orange bg-orange rounded-xl px-4 py-2 hover:opacity-80 text-white '>
+      <button className='border-2 border-blue-800 bg-blue-800 text-slate-100 font-semibold rounded-md px-4 py-2 hover:bg-blue-700 transition-all ease-in-out duration-300 hover:scale-105'>
         Search
       </button>
     </form>
