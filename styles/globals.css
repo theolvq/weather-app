@@ -70,6 +70,11 @@
   .label-title {
     @apply text-xl;
   }
+
+  .placeholder {
+    @apply bg-gradient-to-r from-blue-500 to-blue-800 animate-pulse rounded-lg mb-1 relative flex justify-center items-center;
+    @apply before:absolute  before:bg-gradient-to-r before:from-slate-500 before:to-slate-600  before:w-10/12 before:h-3/4 before:rounded-lg;
+  }
 }
 
 @tailwind utilities;

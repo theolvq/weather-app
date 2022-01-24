@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Current from '../components/Current';
 import Daily from '../components/Daily';
-import Hourly from '../components/Hourly';
 import Header from '../components/Header';
 import Chart from '../components/Chart';
 

@@ -1,7 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import * as d3 from 'd3';
-import { svg } from 'd3';
-import Image from 'next/image';
 
 export default function Chart({ response }) {
   const d3Chart = useRef(null);
@@ -157,6 +155,17 @@ export default function Chart({ response }) {
       d3.select(chart).selectAll('*').remove();
     };
   });
+
+  if (!hourly) {
+    return (
+      <div
+        id='d3-chart'
+        className='sm:col-span-2 lg:col-span-3 card relative z-0 flex items-center justify-center'
+      >
+        <div className='h-3/4 w-11/12 placeholder' />
+      </div>
+    );
+  }
 
   return (
     <div

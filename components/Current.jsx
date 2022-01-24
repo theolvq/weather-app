@@ -5,7 +5,20 @@ import { capitalizeFirstLetter } from '../utils';
 export default function Current({ geoCodes, response }) {
   const { current } = response;
   if (!current) {
-    return null;
+    return (
+      <div className='card flex flex-col items-center min-w-min'>
+        <h2 className='text-2xl h-8 w-14 placeholder'></h2>
+        <div className='mx-2 p-4 w-10/12'>
+          <h1 className='text-xl h-7 w-full text-center placeholder'></h1>
+          <ul className='flex flex-col items-center gap-1'>
+            <li className='h-16 w-full placeholder'></li>
+            <li className='h-6 w-full placeholder'></li>
+            <li className='h-6 w-full placeholder'></li>
+            <li className='h-6 w-full placeholder '></li>
+          </ul>
+        </div>
+      </div>
+    );
   }
 
   return (
