@@ -17,6 +17,14 @@
   svg {
     @apply fill-current z-0;
   }
+  input:not[type='submit'] {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    padding: 5px;
+  }
+  input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  }
 }
 
 @tailwind components;
