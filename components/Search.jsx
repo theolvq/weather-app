@@ -53,7 +53,7 @@ export default function Search({
       />
       <div className='flex flex-col relative z-50'>
         <input
-          className='sm:w-80 w-full text-slate-100 focus:text-slate-700 bg-opacity-0 placeholder:text-slate-100 bg-slate-50 border-2 border-blue-700 py-2 px-3 rounded-md hover:border-blue-700 hover:bg-slate-50 hover:text-slate-700 focus-visible:outline-blue-700 focus:bg-opacity-100 focus:border-opacity-0 focus:placeholder:text-slate-700 hover:placeholder:text-slate-700 transition duration-300 ease-in-out'
+          className='sm:w-80 w-full text-slate-100 focus:text-slate-700 bg-opacity-0 placeholder:text-slate-100 bg-slate-50 border-2 border-blue-700 py-2 px-3 rounded-md hover:border-blue-700 hover:bg-slate-50 hover:text-slate-700 focus-visible:outline-blue-700 focus:bg-opacity-100 focus:border-opacity-0 focus:placeholder:text-slate-700 hover:placeholder:text-slate-700 transition duration-500 ease-in-out'
           placeholder='Search for a city'
           type='text'
           name='city'
@@ -78,8 +78,9 @@ export default function Search({
           </ul>
         )}
       </div>
-      <button className='border-2 border-blue-800 bg-blue-800 text-slate-100 font-semibold rounded-md px-4 py-2 hover:bg-blue-700 hover:border-blue-700 transition-all ease-in-out duration-300 hover:scale-105'>
+      <button className='border-2 border-blue-800 bg-blue-800 text-slate-100 font-semibold rounded-md px-4 py-2 hover:bg-slate-100 hover:border-slate-100 hover:text-blue-800 transition-all ease-in-out duration-500 hover:scale-105 group'>
         Search
+        <div className='absolute opacity-0 -top-2 -right-2  w-6 h-6 rounded-full bg-gradient-to-tr from-orange-700 group group-hover:opacity-100 group-hover:-translate-x-[5rem] group-hover:bg-gradient-to-tl transition-all duration-500' />
       </button>
     </form>
   );
