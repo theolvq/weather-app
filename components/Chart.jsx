@@ -27,7 +27,6 @@ export default function Chart({ response }) {
       const svg = d3
         .select(chart)
         .attr('viewBox', [0, 0, viewBoxWidth, viewBoxHeight])
-        // .attr('preserveAspectRatio', 'xMinYMin meet')
         .append('g')
         .attr('transform', `translate(${margin.left}, ${margin.top})`);
 
@@ -141,7 +140,10 @@ export default function Chart({ response }) {
   });
 
   return (
-    <div id='d3-chart' className='relative sm:col-span-2 lg:col-span-3  card'>
+    <div
+      id='d3-chart'
+      className='sm:col-span-2 lg:col-span-3 card relative z-50'
+    >
       <svg ref={d3Chart} />
     </div>
   );

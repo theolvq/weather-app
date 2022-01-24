@@ -15,7 +15,7 @@
   }
 
   svg {
-    @apply fill-current;
+    @apply fill-current z-0;
   }
 }
 
@@ -51,7 +51,7 @@
 
   .dot {
     @apply opacity-0  stroke-transparent stroke-[0.75rem];
-    @apply hover:fill-slate-300 hover:opacity-100;
+    @apply hover:fill-slate-300 hover:opacity-100 hover:cursor-pointer;
   }
   .label {
     @apply text-sm;

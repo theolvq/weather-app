@@ -7,7 +7,6 @@ export default function Search({
   setCity,
   cities,
   setCities,
-  response,
 }) {
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,7 +37,6 @@ export default function Search({
 
   useEffect(() => {
     if (city.length > 3) getGeoCodes(city);
-    console.log(cities);
   }, [city]); //eslint-disable-line
 
   return (
@@ -46,23 +44,24 @@ export default function Search({
       className='flex justify-between items-center gap-3  p-4 my-0 mx-auto'
       onSubmit={handleSubmit}
     >
-      <div className='flex flex-col relative'>
+      <div className='flex flex-col relative z-50'>
         <input
-          className='sm:w-80 w-full text-grey placeholder:text-grey bg-white bg-opacity-20 border-2 border-orange py-2 px-3 rounded-xl  focus:bg-opacity-100 focus:border-opacity-0 transition duration-500'
+          className='sm:w-80 w-full z-40 text-grey placeholder:text-grey bg-white border-2 border-orange py-2 px-3 rounded-md  focus:bg-opacity-100 focus:border-opacity-0 transition duration-500'
           placeholder='Search for a city'
           type='text'
           name='city'
           value={city}
           onChange={handleChange}
+          autoComplete='off'
         />
 
         {cities.length > 0 && (
-          <ul className='absolute z-50 w-full top-12 bg-grey px-4 pb-2 rounded-b-xl cursor-pointer '>
+          <ul className='absolute z-30 w-full top-10 pt-2 bg-grey px-4 pb-2 rounded-b-md cursor-pointer '>
             {cities.map((city) => (
               <li
                 key={city.lat}
                 value={city.name}
-                className='text-white   hover:bg-aqua px-2 py-0.5 rounded-md '
+                className='text-white hover:bg-aqua px-2 py-0.5 rounded-md'
                 id={city.lat}
                 onClick={handleClick}
               >
