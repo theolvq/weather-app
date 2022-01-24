@@ -101,10 +101,7 @@ export default function Chart({ response }) {
         d3.select('#d3-chart')
           .append('div')
           .attr('class', 'tooltip')
-          .attr('r', 6)
           .style('opacity', 1)
-          .style('left', `${x - width + 40}px`)
-          .style('top', `${y - height + 40}px`)
           .html(
             `${d.temp}°C <br/> 
              <img
@@ -126,6 +123,21 @@ export default function Chart({ response }) {
 
       function onMouseMove(event, d) {
         const [x, y] = d3.pointer(event);
+        const isTooLow = y > height * 0.66;
+        const isTooRight = x > width * 0.9;
+
+        if (isTooLow) {
+          d3.select('.tooltip')
+            .style('left', `${x + 40}px`)
+            .style('top', `${y - 80}px`);
+          return;
+        }
+        if (isTooRight) {
+          d3.select('.tooltip')
+            .style('left', `${x - 100}px`)
+            .style('top', `${y + 40}px`);
+          return;
+        }
 
         d3.select('.tooltip')
           .style('left', `${x + 40}px`)
