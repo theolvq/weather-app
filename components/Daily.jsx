@@ -12,12 +12,12 @@ export default function Daily({ response }) {
           <ul className='card flex flex-col items-center' key={i}>
             <li className='h-6 w-3/4 placeholder mb-7'></li>
             <div className='flex flex-col items-center gap-1 w-full'>
-              <li className='placeholder h-5 w-11/12'></li>
+              <li className='placeholder h-4 w-11/12'></li>
 
-              <li className='placeholder h-5 w-11/12'></li>
-              <li className='placeholder h-5 w-11/12'></li>
-              <li className='placeholder h-5 w-11/12'></li>
-              <li className='placeholder h-5 w-11/12'></li>
+              <li className='placeholder h-4 w-11/12'></li>
+              <li className='placeholder h-4 w-11/12'></li>
+              <li className='placeholder h-4 w-11/12'></li>
+              <li className='placeholder h-4 w-11/12'></li>
             </div>
           </ul>
         ))}

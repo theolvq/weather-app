@@ -4,6 +4,7 @@ import Current from '../components/Current';
 import Daily from '../components/Daily';
 import Header from '../components/Header';
 import Chart from '../components/Chart';
+import Head from 'next/head';
 
 export default function Home() {
   const [city, setCity] = useState('');
@@ -41,22 +42,27 @@ export default function Home() {
   }, [geoCodes]); //eslint-disable-line
 
   return (
-    <main className='min-h-screen main-bg'>
-      <Header
-        getGeoCodes={getGeoCodes}
-        setGeoCodes={setGeoCodes}
-        setCity={setCity}
-        city={city}
-        cities={cities}
-        setCities={setCities}
-        response={response}
-      />
+    <>
+      <Head>
+        <title>Weather App</title>
+      </Head>
+      <main className='min-h-screen main-bg'>
+        <Header
+          getGeoCodes={getGeoCodes}
+          setGeoCodes={setGeoCodes}
+          setCity={setCity}
+          city={city}
+          cities={cities}
+          setCities={setCities}
+          response={response}
+        />
 
-      <section className='max-w-screen-xl p-8 mx-auto my-0 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4  gap-4 '>
-        <Current geoCodes={geoCodes} response={response} />
-        <Chart response={response} />
-        <Daily response={response} />
-      </section>
-    </main>
+        <section className='max-w-screen-xl p-8 mx-auto my-0 grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4  gap-4 '>
+          <Current geoCodes={geoCodes} response={response} />
+          <Chart response={response} />
+          <Daily response={response} />
+        </section>
+      </main>
+    </>
   );
 }
