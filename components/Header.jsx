@@ -21,14 +21,14 @@ export default function Header({
         setCities={setCities}
         response={response}
       />
-      <h3 className='sm:flex hidden self-start  relative font-normal text-xl uppercase tracking-widest group'>
+      <h3 className='sm:flex hidden self-start  relative font-normal text-xl uppercase tracking-widest group cursor-default'>
         <span className='bg-blue-800 text-slate-50 py-2 pl-4 pr-2 rounded-l-md group group-hover:text-blue-800 group-hover:bg-slate-50  transition-all duration-500'>
           Your
         </span>{' '}
         <span className='text-blue-800 bg-slate-50 py-2 pr-4 pl-2 rounded-r-md group group-hover:text-slate-50 group-hover:bg-blue-800 transition-all duration-500'>
           Weather
         </span>
-        <Sun animationSize='md' />
+        <Sun animationSize={'md'} />
       </h3>
     </header>
   );
