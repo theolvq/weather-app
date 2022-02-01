@@ -53,7 +53,7 @@ export default function Search({
       />
       <div className='flex flex-col relative z-40'>
         <input
-          className='sm:w-80 input'
+          className='sm:w-80 input interactive'
           placeholder='Search for a city'
           type='text'
           name='city'
@@ -78,7 +78,7 @@ export default function Search({
           </ul>
         )}
       </div>
-      <button className='border-2 border-blue-800 bg-blue-800 text-slate-100 font-semibold rounded-md px-4 py-2 hover:bg-slate-100 hover:border-slate-100 hover:text-blue-800 transition-all ease-in-out duration-500 group'>
+      <button className='interactive border-2 border-blue-800 bg-blue-800 text-slate-100 font-semibold rounded-md px-4 py-2 hover:bg-slate-100 hover:border-slate-100 hover:text-blue-800 transition-all ease-in-out duration-500 group'>
         Search
       </button>
     </form>
